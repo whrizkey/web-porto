@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Creative Developer</title>
+    <meta name="description"
+        content="Portfolio of a Creative Developer specializing in building premium digital experiences.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="#" class="logo">Portfolio.</a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#work" class="nav-link">Work</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <!-- Mobile Only CTA in Menu -->
+                <li style="margin-top: auto;"><a href="#contact" class="btn-primary"
+                        style="width:100%; text-align:center; display:none;">Let's Talk</a></li>
+            </ul>
+            <a href="#contact" class="btn-primary" id="desktop-cta">Let's Talk</a>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-content">
+                    <span class="hero-eyebrow">Hello, I'm a</span>
+                    <h1 class="hero-title">Creative Developer <br> <span class="text-gradient">Building Digital
+                            Experiences</span></h1>
+                    <p class="hero-subtitle">I craft high-performance websites and applications with a focus on motion,
+                        interaction, and premium aesthetics.</p>
+                    <div class="hero-cta">
+                        <a href="#work" class="btn-primary">View Projects</a>
+                        <a href="#contact" class="btn-outline">Contact Me</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section-padding" id="about">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-content">
+                        <div class="section-header">
+                            <span class="section-label">About Me</span>
+                            <h2 class="section-title">Bridging creativity <br> and logic.</h2>
+                        </div>
+                        <div class="about-text">
+                            <p>I am a developer who believes that code is a tool for expression. With a background in
+                                design and engineering, I specialize in building digital products that look as good as
+                                they perform.</p>
+                            <p>When I'm not coding, you can find me exploring new technologies, contributing to open
+                                source, or refining my craft in UI/UX design.</p>
+                        </div>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <h4>5+</h4>
+                                <span>Years Experience</span>
+                            </div>
+                            <div class="stat-item">
+                                <h4>50+</h4>
+                                <span>Projects Completed</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Decorative/Image side could go here, for now keeping it text heavy or adding a placeholder div -->
+                    <div class="about-visual"
+                        style="background: var(--bg-secondary); border-radius: 20px; height: 400px; border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center;">
+                        <span style="color: var(--text-secondary);">[Portrait / Action Shot]</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="section-padding" id="work">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Portfolio</span>
+                    <h2 class="section-title">Selected Works</h2>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- Placeholder Project 1 -->
+                    <article class="project-card">
+                        <div class="project-image">
+                            <div class="project-overlay">
+                                <div class="icon-btn">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                                        <polyline points="7 7 17 7 17 17"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
+                            <!-- Image will go here -->
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">E-Commerce Redesign</h3>
+                            <p class="project-desc">A complete overhaul of a fashion retailer's online presence with
+                                Headless Shopify.</p>
+                            <div class="project-tags">
+                                <span class="tag">Next.js</span>
+                                <span class="tag">Shopify</span>
+                                <span class="tag">Tailwind</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Placeholder Project 2 -->
+                    <article class="project-card">
+                        <div class="project-image">
+                            <div class="project-overlay">
+                                <div class="icon-btn">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                                        <polyline points="7 7 17 7 17 17"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
+                            <!-- Image will go here -->
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Fintech Dashboard</h3>
+                            <p class="project-desc">Real-time data visualization platform for an investment banking
+                                firm.</p>
+                            <div class="project-tags">
+                                <span class="tag">React</span>
+                                <span class="tag">D3.js</span>
+                                <span class="tag">TypeScript</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Placeholder Project 3 -->
+                    <article class="project-card">
+                        <div class="project-image">
+                            <div class="project-overlay">
+                                <div class="icon-btn">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                                        <polyline points="7 7 17 7 17 17"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
+                            <!-- Image will go here -->
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">AI Content Tool</h3>
+                            <p class="project-desc">SaaS application for generating marketing copy using LLMs.</p>
+                            <div class="project-tags">
+                                <span class="tag">Python</span>
+                                <span class="tag">FastAPI</span>
+                                <span class="tag">OpenAI</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section-padding" id="contact">
+            <div class="container">
+                <div class="contact-cta">
+                    <h2 class="contact-title">Ready to build something amazing?</h2>
+                    <p class="contact-text">
+                        I'm currently available for freelance work and open to full-time opportunities.
+                        Let's turn your vision into reality.
+                    </p>
+                    <a href="mailto:hello@example.com" class="btn-primary">Start a Transformation</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>
