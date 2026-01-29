@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bali Hotel Revenue Analysis | Case Study</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Code Highlighting (Prism) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+
+    <style>
+        .project-header {
+            padding: var(--spacing-xl) 0 var(--spacing-lg);
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .project-meta {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            color: var(--text-accent);
+            font-family: var(--font-main);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.9rem;
+        }
+
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .article-content h2 {
+            font-size: 2rem;
+            margin-top: var(--spacing-lg);
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-primary);
+        }
+
+        .article-content p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .chart-container {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+            text-align: center;
+        }
+
+        .chart-caption {
+            display: block;
+            margin-top: var(--spacing-sm);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .code-block {
+            border-radius: 12px;
+            overflow: hidden;
+            margin: var(--spacing-md) 0;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Override Prism styles for our theme */
+        pre[class*="language-"] {
+            margin: 0;
+            background: #1a1a1d;
+        }
+
+        .insight-box {
+            background: rgba(42, 157, 143, 0.1);
+            /* Teal tint */
+            border-left: 4px solid var(--text-accent-secondary);
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .insight-box h4 {
+            color: var(--text-accent-secondary);
+            margin-bottom: var(--spacing-sm);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Portfolio.</a>
+            <a href="index.html#work" class="btn-outline">← Back to Projects</a>
+        </div>
+    </nav>
+
+    <main>
+        <article class="container">
+            <!-- Header -->
+            <header class="project-header">
+                <div class="project-meta">
+                    <span>Cluster Revenue Analysis</span>
+                    <span>•</span>
+                    <span>Feb 2026</span>
+                </div>
+                <h1 class="hero-title">Optimizing Portfolio Revenue: Bali Cluster Analysis</h1>
+                <p class="hero-subtitle">Strategic oversight of 3 Bali properties using real-time Amadeus API data and
+                    comparative analytics.</p>
+                <a href="assets/downloads/revenue_analyst_source_code.zip" class="download-btn"
+                    style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.1); color: var(--text-primary); padding: 10px 16px; border-radius: 8px; text-decoration: none; font-weight: 500; border: 1px solid var(--border-color); transition: all 0.3s ease;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Download Source
+                </a>
+            </header>
+
+            <div class="article-content">
+                <!-- Situation -->
+                <h2>The Business Context</h2>
+                <p>
+                    <strong>Role:</strong> Cluster Revenue Analyst<br>
+                    <strong>Scope:</strong> 3 Properties (Resort, City Hotel, Boutique)<br>
+                    <strong>Data Source:</strong> Amadeus API (Cleaned & Anonymized)
+                </p>
+                <p>
+                    Managing a multi-property portfolio requires moving beyond single-asset focus. The challenge was to
+                    identify performance disparities between our three assets (`Property_001`, `Property_002`,
+                    `Property_004`) to ensure the cluster as a whole outperforms the market share index.
+                </p>
+
+                <!-- Action/Methodology -->
+                <h2>Data Pipeline: Integrating Amadeus API</h2>
+                <p>
+                    I engineered a pipeline to ingest real-time booking data from the Amadeus GDS. This allowed for
+                    granular analysis of 26,000+ booking records.
+                    The raw data was cleaned using Python to normalize currency and room class definitions across the
+                    disparate property management systems (Opera & Holidex).
+                </p>
+
+                <div class="code-block">
+                    <pre><code class="language-python"># Cluster Data Integration
+def analyze_cluster_performance():
+    # Ingesting Amadeus Data
+    df = pd.read_csv("Data/hotel_data_cleaned.csv")
+    
+    # Filter for our Cluster
+    bali_cluster = df[df['flg_region'] == 'Bali']
+    
+    # Aggregating Comparative Metrics
+    cluster_adr = bali_cluster.groupby(['month', 'property_id'])['price_cleaned'].mean()
+    
+    return cluster_adr</code></pre>
+                </div>
+
+                <!-- Analysis 1: Cluster Comparison -->
+                <h2>1. Portfolio Benchmarking (ADR)</h2>
+                <p>
+                    By comparing the Average Daily Rate (ADR) trends across the cluster, we identified that
+                    <strong>Property_002</strong> (Teal line) consistently lags in rate growth during peak season
+                    compared to Property_001.
+                </p>
+
+                <div class="chart-container">
+                    <img src="assets/plots/cluster_comparison.png" alt="Cluster ADR Comparison Chart">
+                    <span class="chart-caption">Fig 1: Comparative ADR analysis of the 3 Bali assets.</span>
+                </div>
+
+                <!-- Tableau Section -->
+                <h2>2. Interactive Dashboard (Tableau)</h2>
+                <p>
+                    To democratize access to these insights for General Managers, I built an interactive Tableau
+                    dashboard. This allows stakeholders to drill down into channel performance without needing raw data
+                    access.
+                </p>
+                <div class="chart-container">
+                    <img src="assets/plots/tableau_dashboard_mockup.png" alt="Tableau Dashboard Simulation"
+                        style="width: 100%; border-radius: 8px;">
+                    <span class="chart-caption">Fig 2: Interactive Dashboard View (Simulated Snapshot)</span>
+                </div>
+
+                <div class="insight-box">
+                    <h4>Cluster Strategy Insight</h4>
+                    <p>While Property_001 is our rate leader, Property_004 drives volume. We implemented a strategy to
+                        shift low-yield group business from 001 to 004, freeing up inventory for high-rated transients
+                        at our flagship property.</p>
+                </div>
+
+                <!-- Analysis 2: Lead Times -->
+                <h2>2. Booking Lead Time Curves</h2>
+                <p>
+                    Understanding <em>when</em> guests book is crucial for setting release rules. The histogram below
+                    shows the distribution of booking lead times.
+                </p>
+
+                <div class="chart-container">
+                    <img src="assets/plots/lead_time.png" alt="Booking Lead Time Distribution">
+                    <span class="chart-caption">Fig 2: Guest booking window distribution (Days prior to arrival).</span>
+                </div>
+
+                <!-- Analysis 3: Revenue Share -->
+                <h2>3. Room Class Performance</h2>
+                <p>
+                    A breakdown of revenue contribution by room type helps in inventory management and overselling
+                    strategies.
+                </p>
+
+                <div class="chart-container">
+                    <img src="assets/plots/revenue_share.png" alt="Revenue Share by Room Class">
+                    <span class="chart-caption">Fig 3: Revenue contribution share.</span>
+                </div>
+
+                <!-- Recommendations -->
+                <h2>Strategic Recommendations</h2>
+                <p>Based on this data, I recommend the following actions to the Revenue Director:</p>
+                <ul
+                    style="color: var(--text-secondary); margin-bottom: 2rem; margin-left:1.5rem; list-style-type: disc;">
+                    <li><strong>Adjust Advance Purchase Rates:</strong> Given the heavy concentration of bookings in the
+                        0-30 day window (Fig 2), we can tighten restrictions on "Early Bird" rates 45 days out to
+                        protect yield.</li>
+                    <li><strong>Premium Room Upsell:</strong> With "Deluxe" rooms driving a significant portion of
+                        revenue (Fig 3), we should focus marketing spend on upselling standard bookings to this category
+                        pre-arrival.</li>
+                    <li><strong>Seasonal Minimum Stay:</strong> Implement a 3-night MLOS (Minimum Length of Stay) during
+                        the Q3 ADR peak to maximize total booking value.</li>
+                </ul>
+
+            </div>
+        </article>
+
+        <!-- Next Project CTA -->
+        <section class="section-padding" style="border-top: 1px solid var(--border-color); margin-top: 4rem;">
+            <div class="container" style="text-align: center;">
+                <h3 style="margin-bottom: 1rem;">Interested in more data stories?</h3>
+                <a href="mailto:hello@example.com" class="btn-primary">Let's Discuss Revenue Strategy</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Syntax Highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+</body>
+
+</html>

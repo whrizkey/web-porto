@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Demand Forecasting | Case Study</title>
+    <!-- Styles & Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <style>
+        /* Reuse report styles */
+        .project-header {
+            padding: var(--spacing-xl) 0 var(--spacing-lg);
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: var(--spacing-lg);
+            position: relative;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            color: var(--text-accent);
+            font-family: var(--font-main);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.9rem;
+        }
+
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .article-content h2 {
+            font-size: 2rem;
+            margin-top: var(--spacing-lg);
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-primary);
+        }
+
+        .article-content p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .chart-container {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+            text-align: center;
+        }
+
+        .chart-caption {
+            display: block;
+            margin-top: var(--spacing-sm);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .code-block {
+            border-radius: 12px;
+            overflow: hidden;
+            margin: var(--spacing-md) 0;
+            border: 1px solid var(--border-color);
+        }
+
+        pre[class*="language-"] {
+            margin: 0;
+            background: #1a1a1d;
+        }
+
+        .insight-box {
+            background: rgba(157, 137, 240, 0.1);
+            border-left: 4px solid #9D89F0;
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .insight-box h4 {
+            color: #9D89F0;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* Download Button */
+        .download-btn {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            padding: 10px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background: var(--text-accent);
+            color: #fff;
+            border-color: var(--text-accent);
+        }
+
+        @media(max-width: 768px) {
+            .download-btn {
+                position: relative;
+                top: 0;
+                transform: none;
+                margin-top: 1rem;
+                display: inline-flex;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Portfolio.</a>
+            <a href="index.html#work" class="btn-outline">← Back to Projects</a>
+        </div>
+    </nav>
+
+    <main>
+        <article class="container">
+            <header class="project-header">
+                <div class="project-meta"><span>Data Science & Predictive Analytics</span><span>•</span><span>Jan
+                        2026</span></div>
+                <h1 class="hero-title">Demand Forecasting with Machine Learning</h1>
+                <p class="hero-subtitle">Predicting Q2 occupancy and revenue demand using Prophet time-series modeling.
+                </p>
+                <a href="assets/downloads/revenue_analyst_source_code.zip" class="download-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Download Source Code
+                </a>
+            </header>
+
+            <div class="article-content">
+                <h2>Moving Beyond Excel</h2>
+                <p>
+                    <strong>Role:</strong> Data Scientist (Revenue)<br>
+                    <strong>Goal:</strong> Reduce forecast variance to &lt;2%.
+                </p>
+                <p>
+                    Traditional "Same Time Last Year" forecasting fails to account for complex market dynamics. I
+                    implemented a Machine Learning approach using **Facebook Prophet** to detect non-linear trends and
+                    seasonality (daily, weekly, yearly) automatically.
+                </p>
+
+                <h2>The Model</h2>
+                <p>
+                    The model was trained on 24 months of historical booking data. It decomposes the time series into
+                    trend, seasonality, and holiday effects to produce a robust future prediction with confidence
+                    intervals.
+                </p>
+
+                <div class="code-block">
+                    <pre><code class="language-python"># Prophet Forecast Implementation
+def forecast_demand(df):
+    model = Prophet(yearly_seasonality=True, weekly_seasonality=True)
+    model.fit(df)
+    
+    future = model.make_future_dataframe(periods=90)
+    forecast = model.predict(future)
+    
+    return forecast[['ds', 'yhat', 'yhat_lower', 'yhat_upper']]</code></pre>
+                </div>
+
+                <h2>Q2 Projection</h2>
+                <p>
+                    The visualization below shows our historical revenue (Teal) and the ML-generated forecast (Orange
+                    dashed) for the next 90 days. The shaded area represents the 95% confidence interval.
+                </p>
+
+                <div class="chart-container">
+                    <img src="assets/plots/ml_forecast.png" alt="Prophet Demand Forecast Chart">
+                    <span class="chart-caption">Fig 1: Q2 Revenue Forecast with 95% Confidence Intervals.</span>
+                </div>
+
+                <div class="insight-box">
+                    <h4>Strategic Value</h4>
+                    <p>The model predicts <strong>stabilized demand</strong> in April (contrary to the manual budget's
+                        drop), suggesting we should hold AIR (Average Initial Rate) steady rather than dropping prices
+                        for volume.</p>
+                </div>
+
+            </div>
+        </article>
+
+        <section class="section-padding" style="border-top: 1px solid var(--border-color); margin-top: 4rem;">
+            <div class="container" style="text-align: center;">
+                <h3 style="margin-bottom: 1rem;">Ready for data-driven decisions?</h3>
+                <a href="mailto:hello@example.com" class="btn-primary">Hire Me</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+</body>
+
+</html>

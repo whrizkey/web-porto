@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Competitor Rate Intelligence | Case Study</title>
+    <!-- Styles & Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <style>
+        /* Reuse Case Study Styles */
+        .project-header {
+            padding: var(--spacing-xl) 0 var(--spacing-lg);
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .project-meta {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            color: var(--text-accent);
+            font-family: var(--font-main);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.9rem;
+        }
+
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .article-content h2 {
+            font-size: 2rem;
+            margin-top: var(--spacing-lg);
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-primary);
+        }
+
+        .article-content p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .chart-container {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+            text-align: center;
+        }
+
+        .chart-caption {
+            display: block;
+            margin-top: var(--spacing-sm);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .code-block {
+            border-radius: 12px;
+            overflow: hidden;
+            margin: var(--spacing-md) 0;
+            border: 1px solid var(--border-color);
+        }
+
+        pre[class*="language-"] {
+            margin: 0;
+            background: #1a1a1d;
+        }
+
+        .insight-box {
+            background: rgba(233, 116, 81, 0.1);
+            /* Orange tint */
+            border-left: 4px solid var(--text-accent);
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .insight-box h4 {
+            color: var(--text-accent);
+            margin-bottom: var(--spacing-sm);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Portfolio.</a>
+            <a href="index.html#work" class="btn-outline">← Back to Projects</a>
+        </div>
+    </nav>
+
+    <main>
+        <article class="container">
+            <header class="project-header">
+                <div class="project-meta"><span>Competitor Analysis</span><span>•</span><span>Jan 2026</span></div>
+                <h1 class="hero-title">Automated Rate Parity & Competitor Tracking</h1>
+                <p class="hero-subtitle">Building a rate shopper dashboard to maintain market positioning against 5 key
+                    competitors.</p>
+                <a href="assets/downloads/revenue_analyst_source_code.zip" class="download-btn"
+                    style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.1); color: var(--text-primary); padding: 10px 16px; border-radius: 8px; text-decoration: none; font-weight: 500; border: 1px solid var(--border-color); transition: all 0.3s ease;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Download Source
+                </a>
+            </header>
+
+            <div class="article-content">
+                <h2>The Challenge: Market Positioning</h2>
+                <p>
+                    <strong>Role:</strong> Competitor Rate Analyst (Market Spy)<br>
+                    <strong>Goal:</strong> Maintain RGI (Revenue Generation Index) > 1.15
+                </p>
+                <p>
+                    In the dynamic Bali market, rates change hourly. Working as the competitive intelligence lead for 3
+                    properties, I needed to ensure we weren't just following the market, but leading it. Manual rate
+                    shopping was too slow to react to "flash sales" by our primary compset.
+                </p>
+
+                <h2>The Solution: Automated Rate Shopper</h2>
+                <p>
+                    I utilized **Python** to scrape rate data from OTA public APIs and track parity violations (where
+                    OTA rates undercut our direct site). This data was fed into a SQL database and visualized for the
+                    Revenue Director.
+                </p>
+
+                <div class="code-block">
+                    <pre><code class="language-python"># Competitor Rate Simulation
+def track_compset_parity(our_rate, compset_avg):
+    # Rule: Always maintain premium position (15% above compset average)
+    target_price = compset_avg * 1.15
+    
+    if our_rate < target_price:
+        action = "YIELD_UP" # We are leaving money on the table
+    elif our_rate > (target_price * 1.1):
+        action = "MONITOR_VOLUME" # We might be priced out
+        
+    return action</code></pre>
+                </div>
+
+                <h2>Visualizing Market Position</h2>
+                <p>
+                    The chart below tracks our property (Orange) against the calculated Compset Average (Teal dashed)
+                    and the Market Leader (Yellow dotted).
+                </p>
+
+                <div class="chart-container">
+                    <img src="assets/plots/competitor_analysis.png" alt="Competitor Analysis Chart">
+                    <span class="chart-caption">Fig 1: Price Positioning Curve (My Hotel vs. Compset vs. Leader).</span>
+                </div>
+
+                <div class="insight-box">
+                    <h4>Strategic Finding</h4>
+                    <p>We successfully maintained our premium positioning (the Orange line sits consistently above the
+                        Teal average). However, in Month 4, we encroached too close to the "Market Leader" price point,
+                        which resulted in a slight dip in conversion. We adjusted quickly by deploying a tactical "Stay
+                        3 Pay 2" offer.</p>
+                </div>
+
+                <h2>Tools Used</h2>
+                <ul style="color:var(--text-secondary); margin-left:1.5rem;">
+                    <li><strong>SQL</strong>: Storing historical rate snapshots.</li>
+                    <li><strong>Python</strong>: Automating the daily "shop".</li>
+                    <li><strong>Tableau</strong>: Visualizing Rate Parity alerts.</li>
+                </ul>
+
+            </div>
+        </article>
+
+        <section class="section-padding" style="border-top: 1px solid var(--border-color); margin-top: 4rem;">
+            <div class="container" style="text-align: center;">
+                <h3 style="margin-bottom: 1rem;">Need sharper market intelligence?</h3>
+                <a href="mailto:hello@example.com" class="btn-primary">Connect with Me</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annual Budget Forecasting | Case Study</title>
+    <!-- Styles & Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <style>
+        /* Reuse report styles */
+        .project-header {
+            padding: var(--spacing-xl) 0 var(--spacing-lg);
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .project-meta {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            color: var(--text-accent);
+            font-family: var(--font-main);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.9rem;
+        }
+
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .article-content h2 {
+            font-size: 2rem;
+            margin-top: var(--spacing-lg);
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-primary);
+        }
+
+        .article-content p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .chart-container {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+            text-align: center;
+        }
+
+        .chart-caption {
+            display: block;
+            margin-top: var(--spacing-sm);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .code-block {
+            border-radius: 12px;
+            overflow: hidden;
+            margin: var(--spacing-md) 0;
+            border: 1px solid var(--border-color);
+        }
+
+        pre[class*="language-"] {
+            margin: 0;
+            background: #1a1a1d;
+        }
+
+        .insight-box {
+            background: rgba(42, 157, 143, 0.1);
+            border-left: 4px solid var(--text-accent-secondary);
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .insight-box h4 {
+            color: var(--text-accent-secondary);
+            margin-bottom: var(--spacing-sm);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Portfolio.</a>
+            <a href="index.html#work" class="btn-outline">← Back to Projects</a>
+        </div>
+    </nav>
+
+    <main>
+        <article class="container">
+            <header class="project-header">
+                <div class="project-meta"><span>Budgeting & Forecasting</span><span>•</span><span>Dec 2025</span></div>
+                <h1 class="hero-title">Annual Business Plan: Maximizing Profitability</h1>
+                <p class="hero-subtitle">Building a bottom-up budget model for Property_001 using historical data and
+                    IBP tools.</p>
+                <a href="assets/downloads/revenue_analyst_source_code.zip" class="download-btn"
+                    style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.1); color: var(--text-primary); padding: 10px 16px; border-radius: 8px; text-decoration: none; font-weight: 500; border: 1px solid var(--border-color); transition: all 0.3s ease;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Download Source
+                </a>
+            </header>
+
+            <div class="article-content">
+                <h2>The Ownership Challenge</h2>
+                <p>
+                    <strong>Role:</strong> Internal Revenue Manager (Property Guardian)<br>
+                    <strong>Goal:</strong> Achieve GOP (Gross Operating Profit) target of 42%.
+                </p>
+                <p>
+                    Budget season is the most critical time of the year. Working directly with the GM and Owners, I was
+                    responsible for forecasting revenue across all streams (Rooms, F&B, Spa) for the upcoming fiscal
+                    year. The goal was to set aggressive yet achievable targets.
+                </p>
+
+                <h2>Forecasting Model</h2>
+                <p>
+                    I moved the property away from simple "Last Year + 5%" budgeting to a robust driver-based model. We
+                    analyzed segment pickup trends to forecast occupancy and ADR separately.
+                </p>
+
+                <div class="code-block">
+                    <pre><code class="language-python"># Budget Variance Logic
+def calculate_variance(budget, actual):
+    variance = actual - budget
+    percent_var = (variance / budget) * 100
+    
+    if percent_var < -5.0:
+        return "CRITICAL_MISS"
+    elif percent_var > 5.0:
+        return "EXCEEDED_TARGET"
+    else:
+        return "ON_TRACK"</code></pre>
+                </div>
+
+                <h2>Q1 Performance Review</h2>
+                <p>
+                    The chart below visualizes our Q1 Budget vs. Actual performance. While Rooms Revenue (Teal) fell
+                    slightly short due to a renovation delay, F&B (Food & Beverage) outperformed significantly, helping
+                    to bridge the gap.
+                </p>
+
+                <div class="chart-container">
+                    <img src="assets/plots/budget_forecast.png" alt="Budget Variance Chart">
+                    <span class="chart-caption">Fig 1: Q1 Revenue Performance Waterfall.</span>
+                </div>
+
+                <div class="insight-box">
+                    <h4>Result</h4>
+                    <p>Despite missing the Rooms target by 4%, the holistic revenue strategy—pushing F&B packages and
+                        Spa upsells—allowed us to hit 96% of the Total Revenue Budget (Total Bar), keeping stakeholders
+                        satisfied.</p>
+                </div>
+
+            </div>
+        </article>
+
+        <section class="section-padding" style="border-top: 1px solid var(--border-color); margin-top: 4rem;">
+            <div class="container" style="text-align: center;">
+                <h3 style="margin-bottom: 1rem;">Looking for reliable forecasting?</h3>
+                <a href="mailto:hello@example.com" class="btn-primary">Hire Me</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+</body>
+
+</html>
