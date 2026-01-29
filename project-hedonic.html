@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Price of Luxury: Hedonic Pricing Model | Case Study</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Code Highlighting (Prism) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+
+    <style>
+        .project-header {
+            padding: var(--spacing-xl) 0 var(--spacing-lg);
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .project-meta {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            color: var(--text-accent);
+            font-family: var(--font-main);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.9rem;
+        }
+
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .article-content h2 {
+            font-size: 2rem;
+            margin-top: var(--spacing-lg);
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-primary);
+        }
+
+        .article-content p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .chart-container {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+            text-align: center;
+        }
+
+        .chart-caption {
+            display: block;
+            margin-top: var(--spacing-sm);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .code-block {
+            border-radius: 12px;
+            overflow: hidden;
+            margin: var(--spacing-md) 0;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Override Prism styles for our theme */
+        pre[class*="language-"] {
+            margin: 0;
+            background: #1a1a1d;
+        }
+
+        .insight-box {
+            background: rgba(42, 157, 143, 0.1);
+            /* Teal tint */
+            border-left: 4px solid var(--text-accent-secondary);
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .insight-box h4 {
+            color: var(--text-accent-secondary);
+            margin-bottom: var(--spacing-sm);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Portfolio.</a>
+            <a href="index.html#work" class="btn-outline">← Back to Projects</a>
+        </div>
+    </nav>
+
+    <main>
+        <article class="container">
+            <!-- Header -->
+            <header class="project-header">
+                <div class="project-meta">
+                    <span>Data Science & Pricing Strategy</span>
+                    <span>•</span>
+                    <span>Feb 2026</span>
+                </div>
+                <h1 class="hero-title">The Price of Luxury: Hedonic Pricing Model</h1>
+                <p class="hero-subtitle">Reverse-engineering hotel pricing using NLP and Regression Analysis to
+                    determine the monetary value of room attributes.</p>
+                <a href="analysis/hedonic_pricing.py" class="download-btn"
+                    style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.1); color: var(--text-primary); padding: 10px 16px; border-radius: 8px; text-decoration: none; font-weight: 500; border: 1px solid var(--border-color); transition: all 0.3s ease;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    View Python Script
+                </a>
+            </header>
+
+            <div class="article-content">
+                <!-- Situation -->
+                <h2>The Question: "What is a Sea View Worth?"</h2>
+                <p>
+                    <strong>Role:</strong> Data Scientist / Revenue Strategist<br>
+                    <strong>Tools:</strong> Python (scikit-learn, pandas, regex)<br>
+                    <strong>Technique:</strong> Natural Language Processing (NLP) & Linear Regression
+                </p>
+                <p>
+                    Hotels often price rooms based on "gut feeling" or simplistic category multipliers.
+                    I wanted to replace intuition with data: Can we mathematically isolate the <strong>exact monetary
+                        value</strong> of specific attributes like "Breakfast", "Suite", or "Sea View"?
+                </p>
+
+                <!-- Methodology -->
+                <h2>Methodology: Mining Value from Text</h2>
+                <p>
+                    The raw data contained unstructured text descriptions. I used Regex and NLP techniques to
+                    feature-engineer binary flags (e.g., `has_view`, `is_suite`) and extracted numerical data (`sqm`)
+                    from these descriptions.
+                </p>
+                <p>
+                    These features were then fed into a **Linear Regression model** to predict the Total Price. The
+                    coefficients of this model serve as the "Price Tag" for each attribute.
+                </p>
+
+                <div class="code-block">
+                    <pre><code class="language-python"># Feature Engineering & Modeling
+def analyze_hedonic_pricing(df):
+    # 1. NLP Extraction
+    df['has_view'] = df['full_text'].apply(lambda x: 1 if 'sea' in x or 'view' in x else 0)
+    df['is_suite'] = df['full_text'].apply(lambda x: 1 if 'suite' in x else 0)
+    
+    # 2. Linear Regression (Hedonic Model)
+    model = LinearRegression()
+    model.fit(df[['has_view', 'is_suite', 'has_breakfast']], df['price'])
+    
+    # 3. Validating the "Price Tag" (Coefficient)
+    return model.coef_</code></pre>
+                </div>
+
+                <!-- Analysis Results -->
+                <h2>The Menu of Value</h2>
+                <p>
+                    The model revealed the hidden pricing structure of the property. Below is the "Price Tag" for each
+                    attribute, holding all other variables constant.
+                </p>
+
+                <div class="chart-container">
+                    <img src="assets/plots/hedonic_valuation.png" alt="Hedonic Valuation Chart">
+                    <span class="chart-caption">Fig 1: The Marginal Monetary Value (in IDR) of each room
+                        attribute.</span>
+                </div>
+
+                <div class="insight-box">
+                    <h4>Key Findings</h4>
+                    <ul style="color: var(--text-secondary); margin-left: 1.5rem; margin-bottom: 0;">
+                        <li><strong>The "Suite" Premium:</strong> Upgrading a guest to a Suite provides the highest
+                            value add (~24M IDR), justifying aggressive upsell paths for this inventory.</li>
+                        <li><strong>Club Access:</strong> Access to the Executive Club is valued at ~19M IDR, suggesting
+                            it is a major driver of willingness-to-pay for high-end travelers.</li>
+                        <li><strong>View Value:</strong> A view commands a ~2.3M IDR premium per night. This data can be
+                            used to dynamically price "High Floor" or "Ocean Front" upgrades during check-in.</li>
+                    </ul>
+                </div>
+
+                <h2>Strategic Application</h2>
+                <p>
+                    This model transforms how we approach pricing and marketing:
+                </p>
+                <ul
+                    style="color: var(--text-secondary); margin-bottom: 2rem; margin-left:1.5rem; list-style-type: disc;">
+                    <li><strong>Attribute-Based Selling (ABS):</strong> Instead of selling generic "Room Types", we can
+                        unbundle features and sell them as add-ons (e.g., "Add Club Access for 15M").</li>
+                    <li><strong>Value-Based Marketing:</strong> We verify that "Breakfast included" packages are priced
+                        correctly relative to the perceived value (1.1M IDR).</li>
+                </ul>
+
+            </div>
+        </article>
+
+        <!-- Next Project CTA -->
+        <section class="section-padding" style="border-top: 1px solid var(--border-color); margin-top: 4rem;">
+            <div class="container" style="text-align: center;">
+                <h3 style="margin-bottom: 1rem;">From Analysis to Strategy</h3>
+                <a href="index.html#contact" class="btn-primary">Get in Touch</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Syntax Highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+</body>
+
+</html>
