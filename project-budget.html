@@ -92,6 +92,13 @@
             color: var(--text-accent-secondary);
             margin-bottom: var(--spacing-sm);
         }
+
+        .more-projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
     </style>
 </head>
 
@@ -99,7 +106,7 @@
     <nav class="navbar" id="navbar">
         <div class="container">
             <a href="index.html" class="logo">Portfolio.</a>
-            <a href="index.html#work" class="btn-outline">← Back to Projects</a>
+            <a href="index.html#work" class="btn-outline">← Back to Home</a>
         </div>
     </nav>
 
@@ -107,9 +114,8 @@
         <article class="container">
             <header class="project-header">
                 <div class="project-meta"><span>Budgeting & Forecasting</span><span>•</span><span>Dec 2025</span></div>
-                <h1 class="hero-title">Annual Business Plan: Maximizing Profitability</h1>
-                <p class="hero-subtitle">Building a bottom-up budget model for Property_001 using historical data and
-                    IBP tools.</p>
+                <h1 class="hero-title">Annual Business Plan</h1>
+                <p class="hero-subtitle">Creating a budget plan for Property_001 using past data.</p>
                 <a href="assets/downloads/revenue_analyst_source_code.zip" class="download-btn"
                     style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.1); color: var(--text-primary); padding: 10px 16px; border-radius: 8px; text-decoration: none; font-weight: 500; border: 1px solid var(--border-color); transition: all 0.3s ease;">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -123,63 +129,127 @@
             </header>
 
             <div class="article-content">
-                <h2>The Ownership Challenge</h2>
+                <h2>The Goal</h2>
                 <p>
-                    <strong>Role:</strong> Internal Revenue Manager (Property Guardian)<br>
-                    <strong>Goal:</strong> Achieve GOP (Gross Operating Profit) target of 42%.
+                    <strong>Role:</strong> Revenue Manager<br>
+                    <strong>Goal:</strong> Reach a profit target of 42%.
                 </p>
                 <p>
-                    Budget season is the most critical time of the year. Working directly with the GM and Owners, I was
-                    responsible for forecasting revenue across all streams (Rooms, F&B, Spa) for the upcoming fiscal
-                    year. The goal was to set aggressive yet achievable targets.
+                    Budgeting is very important. I worked with the General Manager and Owners to predict how much money
+                    we would make from Rooms, Food, and Spa for the next year.
                 </p>
 
-                <h2>Forecasting Model</h2>
+                <h2>How I Planned It</h2>
                 <p>
-                    I moved the property away from simple "Last Year + 5%" budgeting to a robust driver-based model. We
-                    analyzed segment pickup trends to forecast occupancy and ADR separately.
+                    Instead of just adding 5% to last year's numbers, I looked at the trends. I checked how many rooms
+                    were booked and at what price for different types of guests.
                 </p>
 
                 <div class="code-block">
-                    <pre><code class="language-python"># Budget Variance Logic
+                    <pre><code class="language-python"># Checking if we hit the budget
 def calculate_variance(budget, actual):
     variance = actual - budget
     percent_var = (variance / budget) * 100
     
     if percent_var < -5.0:
-        return "CRITICAL_MISS"
+        return "MISSED_TARGET"
     elif percent_var > 5.0:
-        return "EXCEEDED_TARGET"
+        return "DID_GREAT"
     else:
         return "ON_TRACK"</code></pre>
                 </div>
 
-                <h2>Q1 Performance Review</h2>
+                <h2>Q1 Results</h2>
                 <p>
-                    The chart below visualizes our Q1 Budget vs. Actual performance. While Rooms Revenue (Teal) fell
-                    slightly short due to a renovation delay, F&B (Food & Beverage) outperformed significantly, helping
-                    to bridge the gap.
+                    The chart below shows how we did compared to the plan. Rooms revenue (Teal) was a bit low because of
+                    renovations, but Food & Beverage (F&B) did really well.
                 </p>
 
                 <div class="chart-container">
                     <img src="assets/plots/budget_forecast.png" alt="Budget Variance Chart">
-                    <span class="chart-caption">Fig 1: Q1 Revenue Performance Waterfall.</span>
+                    <span class="chart-caption">Fig 1: Revenue vs Budget.</span>
                 </div>
 
                 <div class="insight-box">
                     <h4>Result</h4>
-                    <p>Despite missing the Rooms target by 4%, the holistic revenue strategy—pushing F&B packages and
-                        Spa upsells—allowed us to hit 96% of the Total Revenue Budget (Total Bar), keeping stakeholders
-                        satisfied.</p>
+                    <p>Even though we missed the Rooms target by 4%, we made up for it with good F&B and Spa sales. We
+                        reached 96% of the total goal.</p>
                 </div>
 
             </div>
         </article>
 
+        <!-- More Projects Section -->
+        <section class="section-padding" style="border-top: 1px solid var(--border-color); margin-top: 4rem;">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">More Projects</h2>
+                </div>
+                <div class="more-projects-grid">
+                    <!-- Project 1: The Bali Analysis -->
+                    <a href="project-bali.html" class="project-card-link">
+                        <article class="project-card">
+                            <div class="project-image">
+                                <div class="project-overlay">
+                                    <div class="icon-btn">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                                            <polyline points="7 7 17 7 17 17"></polyline>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <img src="assets/plots/adr_trend.png" alt="Bali ADR Trend Analysis"
+                                    style="object-fit: contain; background: #0a0a0b; padding: 10px;">
+                            </div>
+                            <div class="project-info">
+                                <h3 class="project-title">Bali Hotel Revenue Analysis</h3>
+                                <p class="project-desc">Checking booking trends.</p>
+                                <div class="project-tags">
+                                    <span class="tag">Python</span>
+                                    <span class="tag">Pandas</span>
+                                </div>
+                            </div>
+                        </article>
+                    </a>
+
+                    <!-- Project 2 (Competitor Analysis) -->
+                    <a href="project-competitor.html" class="project-card-link">
+                        <article class="project-card">
+                            <div class="project-image">
+                                <div class="project-overlay">
+                                    <div class="icon-btn">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                                            <polyline points="7 7 17 7 17 17"></polyline>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <img src="assets/plots/competitor_analysis.png" alt="Competitor Rate Analysis"
+                                    style="object-fit: contain; background: #0a0a0b; padding: 10px;">
+                            </div>
+                            <div class="project-info">
+                                <h3 class="project-title">Competitor Rate Tracker</h3>
+                                <p class="project-desc">Tracking competitor prices.</p>
+                                <div class="project-tags">
+                                    <span class="tag">Tableau</span>
+                                    <span class="tag">SQL</span>
+                                </div>
+                            </div>
+                        </article>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
         <section class="section-padding" style="border-top: 1px solid var(--border-color); margin-top: 4rem;">
             <div class="container" style="text-align: center;">
-                <h3 style="margin-bottom: 1rem;">Looking for reliable forecasting?</h3>
-                <a href="mailto:hello@example.com" class="btn-primary">Hire Me</a>
+                <h3 style="margin-bottom: 1rem;">Looking for help with budgeting?</h3>
+                <a href="mailto:rizky.afrizal@icloud.com" class="btn-primary">Hire Me</a>
             </div>
         </section>
     </main>

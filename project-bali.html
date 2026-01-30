@@ -99,6 +99,14 @@
             color: var(--text-accent-secondary);
             margin-bottom: var(--spacing-sm);
         }
+
+        /* Styles for More Projects section */
+        .more-projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
     </style>
 </head>
 
@@ -108,7 +116,7 @@
     <nav class="navbar" id="navbar">
         <div class="container">
             <a href="index.html" class="logo">Portfolio.</a>
-            <a href="index.html#work" class="btn-outline">← Back to Projects</a>
+            <a href="index.html#work" class="btn-outline">← Back to Home</a>
         </div>
     </nav>
 
@@ -121,9 +129,8 @@
                     <span>•</span>
                     <span>Feb 2026</span>
                 </div>
-                <h1 class="hero-title">Optimizing Portfolio Revenue: Bali Cluster Analysis</h1>
-                <p class="hero-subtitle">Strategic oversight of 3 Bali properties using real-time Amadeus API data and
-                    comparative analytics.</p>
+                <h1 class="hero-title">Analysis of Bali Hotels Revenue</h1>
+                <p class="hero-subtitle">Checking how 3 hotels in Bali are performing using data.</p>
                 <a href="assets/downloads/revenue_analyst_source_code.zip" class="download-btn"
                     style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.1); color: var(--text-primary); padding: 10px 16px; border-radius: 8px; text-decoration: none; font-weight: 500; border: 1px solid var(--border-color); transition: all 0.3s ease;">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -138,122 +145,179 @@
 
             <div class="article-content">
                 <!-- Situation -->
-                <h2>The Business Context</h2>
+                <h2>The Situation</h2>
                 <p>
-                    <strong>Role:</strong> Cluster Revenue Analyst<br>
-                    <strong>Scope:</strong> 3 Properties (Resort, City Hotel, Boutique)<br>
-                    <strong>Data Source:</strong> Amadeus API (Cleaned & Anonymized)
+                    <strong>Role:</strong> Data Analyst<br>
+                    <strong>Scope:</strong> 3 Hotels (Resort, City Hotel, Boutique)
                 </p>
                 <p>
-                    Managing a multi-property portfolio requires moving beyond single-asset focus. The challenge was to
-                    identify performance disparities between our three assets (`Property_001`, `Property_002`,
-                    `Property_004`) to ensure the cluster as a whole outperforms the market share index.
+                    I needed to check how three different hotels were doing. The goal was to see which one was doing
+                    well and which one needed help.
                 </p>
 
                 <!-- Action/Methodology -->
-                <h2>Data Pipeline: Integrating Amadeus API</h2>
+                <h2>Getting the Data</h2>
                 <p>
-                    I engineered a pipeline to ingest real-time booking data from the Amadeus GDS. This allowed for
-                    granular analysis of 26,000+ booking records.
-                    The raw data was cleaned using Python to normalize currency and room class definitions across the
-                    disparate property management systems (Opera & Holidex).
+                    I wrote a script to get booking data. This allowed me to look at over 26,000 bookings.
+                    I cleaned the data using Python to make sure all the prices and room names matched.
                 </p>
 
                 <div class="code-block">
-                    <pre><code class="language-python"># Cluster Data Integration
+                    <pre><code class="language-python"># Reading the data
 def analyze_cluster_performance():
-    # Ingesting Amadeus Data
+    # Loading the file
     df = pd.read_csv("Data/hotel_data_cleaned.csv")
     
-    # Filter for our Cluster
+    # Selecting only Bali hotels
     bali_cluster = df[df['flg_region'] == 'Bali']
     
-    # Aggregating Comparative Metrics
+    # Calculating average price
     cluster_adr = bali_cluster.groupby(['month', 'property_id'])['price_cleaned'].mean()
     
     return cluster_adr</code></pre>
                 </div>
 
                 <!-- Analysis 1: Cluster Comparison -->
-                <h2>1. Portfolio Benchmarking (ADR)</h2>
+                <h2>1. Comparing Prices</h2>
                 <p>
-                    By comparing the Average Daily Rate (ADR) trends across the cluster, we identified that
-                    <strong>Property_002</strong> (Teal line) consistently lags in rate growth during peak season
-                    compared to Property_001.
+                    By looking at the average prices, we saw that <strong>Property_002</strong> (Teal line) was charging
+                    less than the others during the busy season.
                 </p>
 
                 <div class="chart-container">
                     <img src="assets/plots/cluster_comparison.png" alt="Cluster ADR Comparison Chart">
-                    <span class="chart-caption">Fig 1: Comparative ADR analysis of the 3 Bali assets.</span>
+                    <span class="chart-caption">Fig 1: Price comparison of the 3 Bali hotels.</span>
                 </div>
 
                 <!-- Tableau Section -->
-                <h2>2. Interactive Dashboard (Tableau)</h2>
+                <h2>2. Interactive Dashboard</h2>
                 <p>
-                    To democratize access to these insights for General Managers, I built an interactive Tableau
-                    dashboard. This allows stakeholders to drill down into channel performance without needing raw data
-                    access.
+                    I made a dashboard so the managers could easily see this information without looking at the raw
+                    data.
                 </p>
                 <div class="chart-container">
                     <img src="assets/plots/tableau_dashboard_mockup.png" alt="Tableau Dashboard Simulation"
                         style="width: 100%; border-radius: 8px;">
-                    <span class="chart-caption">Fig 2: Interactive Dashboard View (Simulated Snapshot)</span>
+                    <span class="chart-caption">Fig 2: Dashboard View</span>
                 </div>
 
                 <div class="insight-box">
-                    <h4>Cluster Strategy Insight</h4>
-                    <p>While Property_001 is our rate leader, Property_004 drives volume. We implemented a strategy to
-                        shift low-yield group business from 001 to 004, freeing up inventory for high-rated transients
-                        at our flagship property.</p>
+                    <h4>What we found</h4>
+                    <p>Property_001 has high prices, but Property_004 gets more bookings. We decided to move some group
+                        bookings to Property_004 to keep rooms open at Property_001 for guests who pay more.</p>
                 </div>
 
                 <!-- Analysis 2: Lead Times -->
-                <h2>2. Booking Lead Time Curves</h2>
+                <h2>2. when do guests book?</h2>
                 <p>
-                    Understanding <em>when</em> guests book is crucial for setting release rules. The histogram below
-                    shows the distribution of booking lead times.
+                    Knowing when guests book helps us decide when to change prices. The chart below shows how many days
+                    in advance people book.
                 </p>
 
                 <div class="chart-container">
                     <img src="assets/plots/lead_time.png" alt="Booking Lead Time Distribution">
-                    <span class="chart-caption">Fig 2: Guest booking window distribution (Days prior to arrival).</span>
+                    <span class="chart-caption">Fig 3: How many days before arrival guests book.</span>
                 </div>
 
                 <!-- Analysis 3: Revenue Share -->
-                <h2>3. Room Class Performance</h2>
+                <h2>3. Room Types</h2>
                 <p>
-                    A breakdown of revenue contribution by room type helps in inventory management and overselling
-                    strategies.
+                    Seeing which room types bring in the most money helps us know what to sell.
                 </p>
 
                 <div class="chart-container">
                     <img src="assets/plots/revenue_share.png" alt="Revenue Share by Room Class">
-                    <span class="chart-caption">Fig 3: Revenue contribution share.</span>
+                    <span class="chart-caption">Fig 4: Revenue by room type.</span>
                 </div>
 
                 <!-- Recommendations -->
-                <h2>Strategic Recommendations</h2>
-                <p>Based on this data, I recommend the following actions to the Revenue Director:</p>
+                <h2>My Suggestions</h2>
+                <p>Based on the data, I suggested this:</p>
                 <ul
                     style="color: var(--text-secondary); margin-bottom: 2rem; margin-left:1.5rem; list-style-type: disc;">
-                    <li><strong>Adjust Advance Purchase Rates:</strong> Given the heavy concentration of bookings in the
-                        0-30 day window (Fig 2), we can tighten restrictions on "Early Bird" rates 45 days out to
-                        protect yield.</li>
-                    <li><strong>Premium Room Upsell:</strong> With "Deluxe" rooms driving a significant portion of
-                        revenue (Fig 3), we should focus marketing spend on upselling standard bookings to this category
-                        pre-arrival.</li>
-                    <li><strong>Seasonal Minimum Stay:</strong> Implement a 3-night MLOS (Minimum Length of Stay) during
-                        the Q3 ADR peak to maximize total booking value.</li>
+                    <li><strong>Change Early Bird Rates:</strong> Since most people book 0-30 days before, we should be
+                        careful with discounts too close to the date.</li>
+                    <li><strong>Sell More Deluxe Rooms:</strong> Deluxe rooms make a lot of money, so we should try to
+                        sell more of them.</li>
+                    <li><strong>Minimum Stay:</strong> We should ask guests to stay at least 3 nights during the busy
+                        season.</li>
                 </ul>
 
             </div>
         </article>
 
+        <!-- More Projects Section -->
+        <section class="section-padding" style="border-top: 1px solid var(--border-color); margin-top: 4rem;">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">More Projects</h2>
+                </div>
+                <div class="more-projects-grid">
+                    <!-- Project 2 (Competitor Analysis) -->
+                    <a href="project-competitor.html" class="project-card-link">
+                        <article class="project-card">
+                            <div class="project-image">
+                                <div class="project-overlay">
+                                    <div class="icon-btn">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                                            <polyline points="7 7 17 7 17 17"></polyline>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <img src="assets/plots/competitor_analysis.png" alt="Competitor Rate Analysis"
+                                    style="object-fit: contain; background: #0a0a0b; padding: 10px;">
+                            </div>
+                            <div class="project-info">
+                                <h3 class="project-title">Competitor Rate Tracker</h3>
+                                <p class="project-desc">Tracking competitor prices.</p>
+                                <div class="project-tags">
+                                    <span class="tag">Tableau</span>
+                                    <span class="tag">SQL</span>
+                                </div>
+                            </div>
+                        </article>
+                    </a>
+
+                    <!-- Project 3 (Budget) -->
+                    <a href="project-budget.html" class="project-card-link">
+                        <article class="project-card">
+                            <div class="project-image">
+                                <div class="project-overlay">
+                                    <div class="icon-btn">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                                            <polyline points="7 7 17 7 17 17"></polyline>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <img src="assets/plots/budget_forecast.png" alt="Annual Budget Forecast"
+                                    style="object-fit: contain; background: #0a0a0b; padding: 10px;">
+                            </div>
+                            <div class="project-info">
+                                <h3 class="project-title">Annual Budget Forecast</h3>
+                                <p class="project-desc">Predicting future revenue.</p>
+                                <div class="project-tags">
+                                    <span class="tag">Excel</span>
+                                    <span class="tag">Forecasting</span>
+                                </div>
+                            </div>
+                        </article>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
         <!-- Next Project CTA -->
         <section class="section-padding" style="border-top: 1px solid var(--border-color); margin-top: 4rem;">
             <div class="container" style="text-align: center;">
-                <h3 style="margin-bottom: 1rem;">Interested in more data stories?</h3>
-                <a href="mailto:hello@example.com" class="btn-primary">Let's Discuss Revenue Strategy</a>
+                <h3 style="margin-bottom: 1rem;">Interested in my analysis?</h3>
+                <a href="mailto:rizky.afrizal@icloud.com" class="btn-primary">Connect with Me</a>
             </div>
         </section>
 

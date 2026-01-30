@@ -1,8 +1,8 @@
 /* Main Application Script */
 
-console.log('Portfolio App Initialized');
+console.log('App started');
 
-// Navbar Scroll Effect
+// Change navbar when scrolling
 const navbar = document.getElementById('navbar');
 
 window.addEventListener('scroll', () => {
@@ -13,7 +13,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Mobile Menu Toggle
+// Mobile Menu
 const mobileBtn = document.querySelector('.mobile-menu-btn');
 const navLinks = document.querySelector('.nav-links');
 
@@ -29,4 +29,3 @@ if (mobileBtn) {
         });
     });
 }
-

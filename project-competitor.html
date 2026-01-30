@@ -93,6 +93,13 @@
             color: var(--text-accent);
             margin-bottom: var(--spacing-sm);
         }
+
+        .more-projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
     </style>
 </head>
 
@@ -100,7 +107,7 @@
     <nav class="navbar" id="navbar">
         <div class="container">
             <a href="index.html" class="logo">Portfolio.</a>
-            <a href="index.html#work" class="btn-outline">← Back to Projects</a>
+            <a href="index.html#work" class="btn-outline">← Back to Home</a>
         </div>
     </nav>
 
@@ -108,9 +115,8 @@
         <article class="container">
             <header class="project-header">
                 <div class="project-meta"><span>Competitor Analysis</span><span>•</span><span>Jan 2026</span></div>
-                <h1 class="hero-title">Automated Rate Parity & Competitor Tracking</h1>
-                <p class="hero-subtitle">Building a rate shopper dashboard to maintain market positioning against 5 key
-                    competitors.</p>
+                <h1 class="hero-title">Tracking Competitor Prices</h1>
+                <p class="hero-subtitle">Building a tool to see what other hotels are charging.</p>
                 <a href="assets/downloads/revenue_analyst_source_code.zip" class="download-btn"
                     style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.1); color: var(--text-primary); padding: 10px 16px; border-radius: 8px; text-decoration: none; font-weight: 500; border: 1px solid var(--border-color); transition: all 0.3s ease;">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -124,71 +130,133 @@
             </header>
 
             <div class="article-content">
-                <h2>The Challenge: Market Positioning</h2>
+                <h2>The Problem</h2>
                 <p>
-                    <strong>Role:</strong> Competitor Rate Analyst (Market Spy)<br>
-                    <strong>Goal:</strong> Maintain RGI (Revenue Generation Index) > 1.15
+                    <strong>Role:</strong> Analyst<br>
+                    <strong>Goal:</strong> Make sure our prices are competitive.
                 </p>
                 <p>
-                    In the dynamic Bali market, rates change hourly. Working as the competitive intelligence lead for 3
-                    properties, I needed to ensure we weren't just following the market, but leading it. Manual rate
-                    shopping was too slow to react to "flash sales" by our primary compset.
+                    Prices in Bali change all the time. I needed to make sure we weren't just following others, but
+                    setting the right price. Checking manually took too long.
                 </p>
 
-                <h2>The Solution: Automated Rate Shopper</h2>
+                <h2>My Solution</h2>
                 <p>
-                    I utilized **Python** to scrape rate data from OTA public APIs and track parity violations (where
-                    OTA rates undercut our direct site). This data was fed into a SQL database and visualized for the
-                    Revenue Director.
+                    I used **Python** to automatically check prices from other websites. This helped us see if we were
+                    too cheap or too expensive.
                 </p>
 
                 <div class="code-block">
-                    <pre><code class="language-python"># Competitor Rate Simulation
+                    <pre><code class="language-python"># Checking Competitor Prices
 def track_compset_parity(our_rate, compset_avg):
-    # Rule: Always maintain premium position (15% above compset average)
+    # We want to be 15% more expensive than the average
     target_price = compset_avg * 1.15
     
     if our_rate < target_price:
-        action = "YIELD_UP" # We are leaving money on the table
+        action = "INCREASE_PRICE" # We are too cheap
     elif our_rate > (target_price * 1.1):
-        action = "MONITOR_VOLUME" # We might be priced out
+        action = "CHECK_VOLUME" # We might be too expensive
         
     return action</code></pre>
                 </div>
 
-                <h2>Visualizing Market Position</h2>
+                <h2>Visualizing the Data</h2>
                 <p>
-                    The chart below tracks our property (Orange) against the calculated Compset Average (Teal dashed)
-                    and the Market Leader (Yellow dotted).
+                    The chart below shows our hotel (Orange) compared to the average (Teal dashed) and the market leader
+                    (Yellow dotted).
                 </p>
 
                 <div class="chart-container">
                     <img src="assets/plots/competitor_analysis.png" alt="Competitor Analysis Chart">
-                    <span class="chart-caption">Fig 1: Price Positioning Curve (My Hotel vs. Compset vs. Leader).</span>
+                    <span class="chart-caption">Fig 1: Price comparison over time.</span>
                 </div>
 
                 <div class="insight-box">
-                    <h4>Strategic Finding</h4>
-                    <p>We successfully maintained our premium positioning (the Orange line sits consistently above the
-                        Teal average). However, in Month 4, we encroached too close to the "Market Leader" price point,
-                        which resulted in a slight dip in conversion. We adjusted quickly by deploying a tactical "Stay
-                        3 Pay 2" offer.</p>
+                    <h4>What happened</h4>
+                    <p>We stayed above the average price, which is good. But in Month 4, we got too close to the most
+                        expensive hotel, and fewer people booked. We fixed this by offering a special deal.</p>
                 </div>
 
                 <h2>Tools Used</h2>
                 <ul style="color:var(--text-secondary); margin-left:1.5rem;">
-                    <li><strong>SQL</strong>: Storing historical rate snapshots.</li>
-                    <li><strong>Python</strong>: Automating the daily "shop".</li>
-                    <li><strong>Tableau</strong>: Visualizing Rate Parity alerts.</li>
+                    <li><strong>SQL</strong>: Saving the data.</li>
+                    <li><strong>Python</strong>: Getting the data automatically.</li>
+                    <li><strong>Tableau</strong>: Showing the data in charts.</li>
                 </ul>
 
             </div>
         </article>
 
+        <!-- More Projects Section -->
+        <section class="section-padding" style="border-top: 1px solid var(--border-color); margin-top: 4rem;">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">More Projects</h2>
+                </div>
+                <div class="more-projects-grid">
+                    <!-- Project 1: The Bali Analysis -->
+                    <a href="project-bali.html" class="project-card-link">
+                        <article class="project-card">
+                            <div class="project-image">
+                                <div class="project-overlay">
+                                    <div class="icon-btn">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                                            <polyline points="7 7 17 7 17 17"></polyline>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <img src="assets/plots/adr_trend.png" alt="Bali ADR Trend Analysis"
+                                    style="object-fit: contain; background: #0a0a0b; padding: 10px;">
+                            </div>
+                            <div class="project-info">
+                                <h3 class="project-title">Bali Hotel Revenue Analysis</h3>
+                                <p class="project-desc">Checking booking trends.</p>
+                                <div class="project-tags">
+                                    <span class="tag">Python</span>
+                                    <span class="tag">Pandas</span>
+                                </div>
+                            </div>
+                        </article>
+                    </a>
+
+                    <!-- Project 3 (Budget) -->
+                    <a href="project-budget.html" class="project-card-link">
+                        <article class="project-card">
+                            <div class="project-image">
+                                <div class="project-overlay">
+                                    <div class="icon-btn">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                                            <polyline points="7 7 17 7 17 17"></polyline>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <img src="assets/plots/budget_forecast.png" alt="Annual Budget Forecast"
+                                    style="object-fit: contain; background: #0a0a0b; padding: 10px;">
+                            </div>
+                            <div class="project-info">
+                                <h3 class="project-title">Annual Budget Forecast</h3>
+                                <p class="project-desc">Predicting future revenue.</p>
+                                <div class="project-tags">
+                                    <span class="tag">Excel</span>
+                                    <span class="tag">Forecasting</span>
+                                </div>
+                            </div>
+                        </article>
+                    </a>
+                </div>
+            </div>
+        </section>
+
         <section class="section-padding" style="border-top: 1px solid var(--border-color); margin-top: 4rem;">
             <div class="container" style="text-align: center;">
-                <h3 style="margin-bottom: 1rem;">Need sharper market intelligence?</h3>
-                <a href="mailto:hello@example.com" class="btn-primary">Connect with Me</a>
+                <h3 style="margin-bottom: 1rem;">Need help with market data?</h3>
+                <a href="mailto:rizky.afrizal@icloud.com" class="btn-primary">Connect with Me</a>
             </div>
         </section>
     </main>
