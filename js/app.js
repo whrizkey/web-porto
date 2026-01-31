@@ -1,7 +1,5 @@
 /* Main Application Script */
 
-console.log('App started');
-
 // Change navbar when scrolling
 const navbar = document.getElementById('navbar');
 
@@ -17,7 +15,7 @@ window.addEventListener('scroll', () => {
 const mobileBtn = document.querySelector('.mobile-menu-btn');
 const navLinks = document.querySelector('.nav-links');
 
-if (mobileBtn) {
+if (mobileBtn && navLinks) {
     mobileBtn.addEventListener('click', () => {
         navLinks.classList.toggle('active');
     });

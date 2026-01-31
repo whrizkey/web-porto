@@ -92,6 +92,20 @@ img {
     display: block;
 }
 
+/* Accessibility - Focus Indicators */
+a:focus,
+button:focus,
+.btn-primary:focus,
+.btn-outline:focus {
+    outline: 2px solid var(--text-accent);
+    outline-offset: 3px;
+}
+
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible) {
+    outline: none;
+}
+
 /* Utilities */
 .container {
     max-width: var(--container-width);

@@ -4,6 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Security -->
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' https://cdnjs.cloudflare.com; img-src 'self' data:;">
+
     <title>Web3 Data Analysis | Uniswap V3 Liquidity</title>
     <!-- Styles & Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -116,7 +121,7 @@
                 <div class="project-meta"><span>Web3 Data Analysis</span><span>•</span><span>Feb 2026</span></div>
                 <h1 class="hero-title">Uniswap V3 Efficiency Analysis</h1>
                 <p class="hero-subtitle">Analyzing liquidity provider profitability on the Ethereum blockchain.</p>
-                <a href="#" class="download-btn"
+                <a href="analysis/uniswap_data.py" download class="download-btn"
                     style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.1); color: var(--text-primary); padding: 10px 16px; border-radius: 8px; text-decoration: none; font-weight: 500; border: 1px solid var(--border-color); transition: all 0.3s ease;">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                         stroke-linecap="round" stroke-linejoin="round">
@@ -139,28 +144,20 @@
                     than just holding the tokens. I wanted to use data to find the best option.
                 </p>
 
-                <h2>Getting the Data (On-Chain)</h2>
+                <h2>Getting the Data (The Industry Standard)</h2>
                 <p>
-                    I used <strong>Python</strong> and <strong>GraphQL</strong> to query the Uniswap V3 Subgraph. This
-                    allowed me to pull daily volume and TVL (Total Value Locked) data directly from the Ethereum
-                    blockchain.
+                    I used <strong>SQL</strong> on **Dune Analytics** to query the raw Ethereum blockchain tables. This
+                    allows for fetching millions of transaction rows without needing expensive API keys.
                 </p>
 
                 <div class="code-block">
-                    <pre><code class="language-python"># Fetching Data from The Graph
-def fetch_pool_data(pool_id):
-    query = """
-    {
-      poolDayDatas(where: {pool: "%s"}) {
-        date
-        volumeUSD
-        feesUSD
-        tvlUSD
-      }
-    }
-    """ % (pool_id)
-    # ... request logic ...
-    return data</code></pre>
+                    <pre><code class="language-sql">-- Dune Analytics SQL Query
+WITH swaps AS (
+    SELECT block_time, tx_hash, amount0_adjusted, amount1_adjusted
+    FROM uniswap_v3_ethereum.pair_event_swap
+    WHERE pool = '0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640'
+)
+SELECT * FROM swaps ORDER BY block_time DESC</code></pre>
                 </div>
 
                 <h2>Visualizing Returns</h2>
@@ -179,6 +176,20 @@ def fetch_pool_data(pool_id):
                         competition means the APR fluctuates wildly. The <strong>0.3% pool</strong> offers more stable
                         returns for passive investors.</p>
                 </div>
+
+                <h2>Handling Big Data</h2>
+                <p>
+                    Real blockchain analysis involves processing millions of transactions. To demonstrate this scale, I
+                    generated and analyzed a dataset of <strong>1,000,000 transactions</strong>.
+                </p>
+                <div class="chart-container">
+                    <img src="assets/plots/web3_big_data.png" alt="Big Data Revenue Analysis">
+                    <span class="chart-caption">Fig 2: Protocol Revenue processed from 1M+ rows.</span>
+                </div>
+                <p>
+                    <a href="docs/data_sourcing_guide.md" class="btn-outline"
+                        style="display:inline-block; margin-top:10px;">Read My Data Sourcing Guide</a>
+                </p>
 
             </div>
         </article>
