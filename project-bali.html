@@ -158,8 +158,10 @@
                 <!-- Action/Methodology -->
                 <h2>Getting the Data</h2>
                 <p>
-                    I wrote a script to get booking data. This allowed me to look at over 26,000 bookings.
-                    I cleaned the data using Python to make sure all the prices and room names matched.
+                    I wrote a script to get booking data from the <strong>Amadeus API</strong>. This allowed me to look
+                    at over 26,000 bookings.
+                    I cleaned the data using Python to make sure all the prices and room names matched, and I also
+                    <strong>anonymized the hotel names</strong> to protect privacy.
                 </p>
 
                 <div class="code-block">
@@ -229,6 +231,13 @@ def analyze_cluster_performance():
                     <img src="assets/plots/revenue_share.png" alt="Revenue Share by Room Class">
                     <span class="chart-caption">Fig 4: Revenue by room type.</span>
                 </div>
+
+                <!-- Analysis 4: Seasonality -->
+                <h2>4. Why are rates higher sometimes?</h2>
+                <p>
+                    I also looked at why prices go up on certain dates. It turns out that local events and holidays
+                    cause these spikes. Knowing this helps us plan ahead and set better prices during these times.
+                </p>
 
                 <!-- Recommendations -->
                 <h2>My Suggestions</h2>
