@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web3 Data Analysis | Uniswap V3 Liquidity</title>
+    <!-- Styles & Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <style>
+        /* Reuse Case Study Styles */
+        .project-header {
+            padding: var(--spacing-xl) 0 var(--spacing-lg);
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .project-meta {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            color: var(--text-accent);
+            font-family: var(--font-main);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.9rem;
+        }
+
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .article-content h2 {
+            font-size: 2rem;
+            margin-top: var(--spacing-lg);
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-primary);
+        }
+
+        .article-content p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .chart-container {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+            text-align: center;
+        }
+
+        .chart-caption {
+            display: block;
+            margin-top: var(--spacing-sm);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .code-block {
+            border-radius: 12px;
+            overflow: hidden;
+            margin: var(--spacing-md) 0;
+            border: 1px solid var(--border-color);
+        }
+
+        pre[class*="language-"] {
+            margin: 0;
+            background: #1a1a1d;
+        }
+
+        .insight-box {
+            background: rgba(42, 157, 143, 0.1);
+            border-left: 4px solid var(--text-accent-secondary);
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .insight-box h4 {
+            color: var(--text-accent-secondary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .more-projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Portfolio.</a>
+            <a href="index.html#work" class="btn-outline">← Back to Home</a>
+        </div>
+    </nav>
+
+    <main>
+        <article class="container">
+            <header class="project-header">
+                <div class="project-meta"><span>Web3 Data Analysis</span><span>•</span><span>Feb 2026</span></div>
+                <h1 class="hero-title">Uniswap V3 Efficiency Analysis</h1>
+                <p class="hero-subtitle">Analyzing liquidity provider profitability on the Ethereum blockchain.</p>
+                <a href="#" class="download-btn"
+                    style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.1); color: var(--text-primary); padding: 10px 16px; border-radius: 8px; text-decoration: none; font-weight: 500; border: 1px solid var(--border-color); transition: all 0.3s ease;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Download Script
+                </a>
+            </header>
+
+            <div class="article-content">
+                <h2>The Question</h2>
+                <p>
+                    <strong>Objective:</strong> Find the most profitable Fee Tier for USDC/ETH.
+                </p>
+                <p>
+                    In decentralized finance (DeFi), users can provide liquidity to earn fees. But with Uniswap V3, you
+                    have to choose a "Fee Tier" (0.05%, 0.3%, or 1%). Choosing the wrong one means earning less money
+                    than just holding the tokens. I wanted to use data to find the best option.
+                </p>
+
+                <h2>Getting the Data (On-Chain)</h2>
+                <p>
+                    I used <strong>Python</strong> and <strong>GraphQL</strong> to query the Uniswap V3 Subgraph. This
+                    allowed me to pull daily volume and TVL (Total Value Locked) data directly from the Ethereum
+                    blockchain.
+                </p>
+
+                <div class="code-block">
+                    <pre><code class="language-python"># Fetching Data from The Graph
+def fetch_pool_data(pool_id):
+    query = """
+    {
+      poolDayDatas(where: {pool: "%s"}) {
+        date
+        volumeUSD
+        feesUSD
+        tvlUSD
+      }
+    }
+    """ % (pool_id)
+    # ... request logic ...
+    return data</code></pre>
+                </div>
+
+                <h2>Visualizing Returns</h2>
+                <p>
+                    I calculated the APR (Annual Percentage Rate) for both the 0.05% and 0.3% pools over the last year.
+                </p>
+
+                <div class="chart-container">
+                    <img src="assets/plots/web3_apr.png" alt="Uniswap Profitability Chart">
+                    <span class="chart-caption">Fig 1: 7-Day Rolling APR Comparison.</span>
+                </div>
+
+                <div class="insight-box">
+                    <h4>The Finding</h4>
+                    <p>Even though the 0.05% pool has much higher volume (it is used for active trading), higher
+                        competition means the APR fluctuates wildly. The <strong>0.3% pool</strong> offers more stable
+                        returns for passive investors.</p>
+                </div>
+
+            </div>
+        </article>
+
+        <!-- More Projects Section -->
+        <section class="section-padding" style="border-top: 1px solid var(--border-color); margin-top: 4rem;">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">More Projects</h2>
+                </div>
+                <div class="more-projects-grid">
+                    <!-- Project 1: The Bali Analysis -->
+                    <a href="project-bali.html" class="project-card-link">
+                        <article class="project-card">
+                            <div class="project-image">
+                                <div class="project-overlay">
+                                    <div class="icon-btn">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                                            <polyline points="7 7 17 7 17 17"></polyline>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <img src="assets/plots/adr_trend.png" alt="Bali ADR Trend Analysis"
+                                    style="object-fit: contain; background: #0a0a0b; padding: 10px;">
+                            </div>
+                            <div class="project-info">
+                                <h3 class="project-title">Bali Hotel Revenue Analysis</h3>
+                                <p class="project-desc">Checking booking trends.</p>
+                                <div class="project-tags">
+                                    <span class="tag">Python</span>
+                                    <span class="tag">Pandas</span>
+                                </div>
+                            </div>
+                        </article>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding" style="border-top: 1px solid var(--border-color); margin-top: 4rem;">
+            <div class="container" style="text-align: center;">
+                <h3 style="margin-bottom: 1rem;">Looking for a Web3 Analyst?</h3>
+                <a href="mailto:rizky.afrizal@icloud.com" class="btn-primary">Connect with Me</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+</body>
+
+</html>
