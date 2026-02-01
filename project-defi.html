@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Security -->
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self'; img-src 'self' data:;">
+
+    <title>DeFi Protocol Analysis | TVL Research</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .project-header {
+            padding: var(--spacing-xl) 0 var(--spacing-lg);
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .project-meta {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            color: var(--text-accent);
+            font-family: var(--font-main);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.9rem;
+        }
+
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .article-content h2 {
+            font-size: 2rem;
+            margin-top: var(--spacing-lg);
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-primary);
+        }
+
+        .article-content p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .download-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(42, 157, 143, 0.1);
+            color: var(--text-accent-secondary);
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 1px solid var(--text-accent-secondary);
+            transition: all 0.3s ease;
+            margin: 8px 8px 8px 0;
+        }
+
+        .download-btn:hover {
+            background: var(--text-accent-secondary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .chart-container {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+            text-align: center;
+        }
+
+        .chart-caption {
+            display: block;
+            margin-top: var(--spacing-sm);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-sm);
+            margin: var(--spacing-md) 0;
+        }
+
+        .stat-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: var(--spacing-sm);
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            font-size: 2rem;
+            color: var(--text-accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Portfolio.</a>
+            <a href="index.html#work" class="btn-outline">← Back to Home</a>
+        </div>
+    </nav>
+
+    <main>
+        <article class="container">
+            <header class="project-header">
+                <div class="project-meta"><span>DeFi Protocol Analysis</span><span>•</span><span>Feb 2026</span></div>
+                <h1 class="hero-title">Total Value Locked Analysis</h1>
+                <p class="hero-subtitle">Analyzing $558 billion across 7,000+ DeFi protocols using live blockchain data.
+                </p>
+            </header>
+
+            <div class="article-content">
+                <h2>The Objective</h2>
+                <p>
+                    As a DeFi analyst, understanding <strong>Total Value Locked (TVL)</strong> is critical. TVL
+                    represents the total capital deposited in a protocol—it's the primary metric for protocol health and
+                    market dominance.
+                </p>
+                <p>
+                    I analyzed real-time data from <strong>DeFiLlama</strong> to identify which protocols, categories,
+                    and chains control the DeFi landscape.
+                </p>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>7,012</h3>
+                        <p>Protocols Analyzed</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>$558B</h3>
+                        <p>Total TVL</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>88.5%</h3>
+                        <p>Market Coverage</p>
+                    </div>
+                </div>
+
+                <h2>Step 1: Data Collection</h2>
+                <p>
+                    I used the <strong>DeFiLlama public API</strong> to fetch live TVL data for all protocols. No API
+                    key required—just a simple HTTP call.
+                </p>
+
+                <div class="download-section">
+                    <h4 style="margin-top:0; color: var(--text-primary);">📥 Download Raw Data</h4>
+                    <p style="font-size: 0.95rem; margin-bottom: 1rem;">Unprocessed data directly from DeFiLlama (7,012
+                        protocols)</p>
+                    <a href="defi_analysis/01_raw_data/defillama_tvl_raw.csv" download class="download-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Raw Data (CSV)
+                    </a>
+                    <a href="defi_analysis/scripts/fetch_data.py" download class="download-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                        Python Script
+                    </a>
+                </div>
+
+                <h2>Step 2: Data Cleaning</h2>
+                <p>
+                    I filtered out inactive protocols (TVL = 0), enriched the data with derived metrics like market
+                    share percentage, and focused on the top 100 protocols which represent 88.5% of the total market.
+                </p>
+
+                <div class="download-section">
+                    <h4 style="margin-top:0; color: var(--text-primary);">📥 Download Cleaned Data</h4>
+                    <p style="font-size: 0.95rem; margin-bottom: 1rem;">Top 100 protocols with enriched metrics</p>
+                    <a href="defi_analysis/02_cleaned_data/defillama_tvl_cleaned.csv" download class="download-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Cleaned Data (CSV)
+                    </a>
+                    <a href="defi_analysis/scripts/clean_data.py" download class="download-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                        Cleaning Script
+                    </a>
+                </div>
+
+                <h2>Step 3: Analysis & Insights</h2>
+                <p>
+                    Using Python (Pandas + Matplotlib), I generated visualizations to answer key questions:
+                </p>
+                <ul style="color: var(--text-secondary);">
+                    <li>Which protocols dominate TVL?</li>
+                    <li>How is TVL distributed across categories (DEX, Lending, etc.)?</li>
+                    <li>Are multi-chain protocols outperforming single-chain?</li>
+                </ul>
+
+                <div class="chart-container">
+                    <img src="defi_analysis/03_visualizations/top10_protocols.png" alt="Top 10 Protocols"
+                        style="max-width: 100%;">
+                    <span class="chart-caption">Fig 1: Top 10 protocols by Total Value Locked</span>
+                </div>
+
+                <div class="chart-container">
+                    <img src="defi_analysis/03_visualizations/category_distribution.png" alt="Category Distribution"
+                        style="max-width: 100%;">
+                    <span class="chart-caption">Fig 2: TVL distribution by protocol category</span>
+                </div>
+
+                <div class="chart-container">
+                    <img src="defi_analysis/03_visualizations/chain_comparison.png" alt="Chain Comparison"
+                        style="max-width: 100%;">
+                    <span class="chart-caption">Fig 3: Multi-chain vs single-chain protocols</span>
+                </div>
+
+                <div class="download-section">
+                    <h4 style="margin-top:0; color: var(--text-primary);">📥 Download Visualizations</h4>
+                    <a href="defi_analysis/03_visualizations/top10_protocols.png" download class="download-btn">Top 10
+                        Chart</a>
+                    <a href="defi_analysis/03_visualizations/category_distribution.png" download
+                        class="download-btn">Category Distribution</a>
+                    <a href="defi_analysis/03_visualizations/chain_comparison.png" download class="download-btn">Chain
+                        Comparison</a>
+                    <a href="defi_analysis/scripts/analyze_data.py" download class="download-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                        Analysis Script
+                    </a>
+                </div>
+
+                <h2>Key Findings</h2>
+                <ul style="color: var(--text-secondary); line-height: 1.8;">
+                    <li><strong>CEX dominance:</strong> Centralized exchanges (Binance, OKX) still hold the majority of
+                        TVL despite the "decentralization" narrative.</li>
+                    <li><strong>Lending protocols</strong> like Aave V3 are the backbone of DeFi, powering $54B in
+                        loans.</li>
+                    <li><strong>Multi-chain wins:</strong> Protocols deployed across multiple chains capture
+                        significantly more TVL than single-chain competitors.</li>
+                </ul>
+
+            </div>
+        </article>
+
+        <section class="section-padding" style="border-top: 1px solid var(--border-color); margin-top: 4rem;">
+            <div class="container" style="text-align: center;">
+                <h3 style="margin-bottom: 1rem;">Looking for a DeFi Analyst?</h3>
+                <a href="mailto:rizky.afrizal@icloud.com" class="btn-primary">Let's Talk</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
