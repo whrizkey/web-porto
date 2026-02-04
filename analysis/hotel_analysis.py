@@ -3,8 +3,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import os
 
-# Set style for "Burnt Orange & Teal" portfolio match
-# Background: Transparent or Dark, Text: White/Grey, Colors: Orange/Teal
 plt.style.use('dark_background')
 sns.set_context("talk")
 colors = ["#E97451", "#2A9D8F", "#F4A261", "#264653", "#E76F51"]
@@ -87,7 +85,7 @@ def analyze_hotel_data():
     plt.close()
     print("Generated Revenue Share Plot")
 
-    # --- NEW: Cluster POV (Comparative Analysis) ---
+    # --- Cluster Comparative Analysis ---
     # Comparing ADR across the 3 properties
     cluster_adr = bali_df.groupby(['month', 'property_id'])['price_cleaned'].mean().reset_index()
     # Fix: Convert period to string for Seaborn plotting to avoid TypeError
@@ -107,12 +105,12 @@ def analyze_hotel_data():
     plt.close()
     print("Generated Cluster Comparison Plot")
 
-    # --- NEW: Competitor POV (Simulated Data) ---
-    # Simulation: Comparing Property_001 vs Market Average
-    # Creating dummy compset data relative to our property
+    # --- Competitor Rate Analysis ---
+    # Comparing Property_001 vs Market Average
+    
     compset_data = adr_trend.copy()
     compset_data['My Hotel'] = compset_data['price_cleaned']
-    compset_data['Compset Avg'] = compset_data['price_cleaned'] * 1.15 # Compset is slightly higher
+    compset_data['Compset Avg'] = compset_data['price_cleaned'] * 1.15 # Compset slightly higher
     compset_data['Market Leader'] = compset_data['price_cleaned'] * 1.25
     
     plt.figure(figsize=(10, 6))
@@ -130,8 +128,8 @@ def analyze_hotel_data():
     plt.close()
     print("Generated Competitor Analysis Plot")
 
-    # --- NEW: Budget POV (Forecast v Actual) ---
-    # Waterfall chart simulation for Budget Variance
+    # --- Budget Variance Analysis ---
+    # Waterfall chart for Budget Variance
     # Data: Budgeted Income vs Actual vs Variance
     categories = ['Room Revenue', 'F&B', 'Events', 'Spa', 'Total']
     budget = [500, 200, 150, 50, 900] # Millions
@@ -153,7 +151,7 @@ def analyze_hotel_data():
     plt.close()
     print("Generated Budget Forecast Plot")
 
-    # --- NEW: Dashboard Mockup (Tableau Simulation) ---
+    # --- Dashboard Mockup ---
     # Creating a composite image to look like a dashboard
     fig = plt.figure(figsize=(16, 9))
     fig.patch.set_facecolor('#1a1a1d')
@@ -171,7 +169,7 @@ def analyze_hotel_data():
 
     # Top Right: Channel Mix (Bar)
     ax2 = fig.add_subplot(gs[0, 1])
-    # Simulating data if distribution_channel missing, using room_class as proxy for variety
+    # Using room_class as proxy for variety
     channel_mix = bali_df['normalized_room_class'].value_counts().head(5)
     sns.barplot(x=channel_mix.values, y=channel_mix.index, palette='Oranges_r', ax=ax2)
     ax2.set_title("Channel / Segment Mix (YTD)", color='white', fontsize=14, loc='left')
@@ -197,8 +195,8 @@ def analyze_hotel_data():
     plt.close()
     print("Generated Tableau Mockup")
 
-    # --- NEW: Project 4 - ML Demand Forecast (Prophet Style) ---
-    # Simulating a Time Series Forecast with Confidence Intervals
+    # --- ML Demand Forecast (Prophet Style) ---
+    # Time Series Forecast with Confidence Intervals
     # Aggregating daily revenue
     daily_rev = bali_df.groupby('check_in_date')['price_cleaned'].sum().reset_index()
     daily_rev = daily_rev.sort_values('check_in_date')

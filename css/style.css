@@ -1,6 +1,5 @@
 /*
  * Portfolio Premium Design System
- * Theme: Modern Dark | Aesthetic: Clean, High-Contrast, Smooth
  */
 
 :root {
@@ -12,12 +11,9 @@
     --text-primary: #ffffff;
     --text-secondary: #a1a1aa;
 
-    /* Burnt Orange & Teal */
     --text-accent: #E97451;
-    /* Soft Burnt Orange */
     --text-accent-hover: #F4A261;
     --text-accent-secondary: #2A9D8F;
-    /* Teal */
 
     --border-color: #27272a;
 

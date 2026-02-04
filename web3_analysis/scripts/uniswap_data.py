@@ -38,7 +38,7 @@ def fetch_pool_data(pool_id, days=30):
     
     if response.status_code == 200:
         data = response.json()
-        print(data) # Debug print
+        # Data loaded successfully
         if 'data' not in data:
             print("ERROR: 'data' key missing in response")
             return []
