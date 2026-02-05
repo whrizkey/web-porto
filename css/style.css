@@ -432,6 +432,150 @@ button:focus:not(:focus-visible) {
     font-weight: 500;
 }
 
+/* Carousel Styles */
+.carousel-container {
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.carousel-wrapper {
+    overflow: hidden;
+    padding: 2rem 0;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 2rem;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0 calc(50% - 220px);
+}
+
+.carousel-track .project-card-link {
+    flex: 0 0 440px;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.carousel-track .project-card {
+    transform: scale(0.85);
+    opacity: 0.5;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carousel-track .project-card-link.active .project-card {
+    transform: scale(1);
+    opacity: 1;
+    border-color: var(--text-accent);
+    box-shadow: 0 25px 50px -12px rgba(233, 116, 81, 0.3);
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    transition: var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+}
+
+.carousel-btn:hover {
+    background: var(--text-accent);
+    border-color: var(--text-accent);
+    color: white;
+}
+
+.carousel-btn svg {
+    pointer-events: none;
+}
+
+.carousel-prev {
+    left: 0;
+}
+
+.carousel-next {
+    right: 0;
+}
+
+.carousel-dots {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.carousel-dots .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: var(--transition-fast);
+    padding: 0;
+}
+
+.carousel-dots .dot.active {
+    background: var(--text-accent);
+    border-color: var(--text-accent);
+    transform: scale(1.2);
+}
+
+.carousel-dots .dot:hover {
+    background: var(--text-accent-hover);
+    border-color: var(--text-accent-hover);
+}
+
+/* Mobile Carousel */
+@media (max-width: 768px) {
+    .carousel-track {
+        gap: 1rem;
+        padding: 0;
+    }
+
+    .carousel-track .project-card-link {
+        flex: 0 0 90vw;
+    }
+
+    .carousel-track .project-card {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    .carousel-track .project-card-link.active .project-card {
+        transform: scale(1);
+    }
+
+    .carousel-btn {
+        display: none;
+    }
+
+    .carousel-wrapper {
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .carousel-wrapper::-webkit-scrollbar {
+        display: none;
+    }
+
+    .carousel-track .project-card-link {
+        scroll-snap-align: center;
+    }
+}
+
+
 /* Contact Section (CTA) */
 .contact-cta {
     background: var(--gradient-surface);

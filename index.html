@@ -58,28 +58,12 @@
         </div>
     </nav>
 
+
     <main>
-        <!-- Hero Section -->
-        <section class="hero" id="home">
-            <div class="container">
-                <div class="hero-content">
-                    <span class="highlight-text">Data Analyst</span>
-                    <h1 class="hero-title">Turning Raw Data <br> Into <span class="text-accent">Useful Insights</span>
-                    </h1>
-                    <p class="hero-desc">
-                        I enjoy looking at numbers and finding patterns. I use Python and SQL to help hotels understand
-                        their data better.
-                    </p>
-                    <div class="hero-cta">
-                        <a href="#work" class="btn-primary">View My Work</a>
-                        <a href="mailto:rizky.afrizal@icloud.com" class="btn-outline">Contact Me</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+
 
         <!-- About Section -->
-        <section class="section-padding" id="about">
+        <section class="section-padding" id="about" style="padding-top: 8rem;">
             <div class="container">
                 <div class="about-grid">
                     <div class="about-content">
@@ -88,19 +72,18 @@
                             <h2 class="section-title">I like making data <br> easy to understand.</h2>
                         </div>
                         <div class="about-text">
-                            <p>As a Data Analyst, I like collecting data and making it useful for the team. I help with
-                                reports and planning.</p>
-                            <p>I am familiar with hotel systems like Opera and Holidex, and I use tools to track what
-                                competitors are doing.</p>
+                            <p>I enjoy working with data and turning it into useful insights that help the team with
+                                reporting and planning. I like organizing information, spotting patterns, and making
+                                data easier to understand so it can support better decisions.</p>
                         </div>
                         <div class="stats-grid">
                             <div class="stat-item">
                                 <h4>Tools</h4>
-                                <span>SQL, Python, Excel</span>
+                                <span>SQL, Python, Excel, Tableau, Power BI</span>
                             </div>
                             <div class="stat-item">
                                 <h4>Systems</h4>
-                                <span>Opera, Holidex</span>
+                                <span>CRM, Opera (PMS), RMS, Marsha</span>
                             </div>
                         </div>
                     </div>
@@ -125,127 +108,159 @@
                     <h2 class="section-title">My Projects</h2>
                 </div>
 
-                <div class="projects-grid">
-                    <!-- Project 1: The Bali Analysis (The Featured One) -->
-                    <a href="project-bali.html" class="project-card-link">
-                        <article class="project-card">
-                            <div class="project-image">
-                                <div class="project-overlay">
-                                    <div class="icon-btn">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round">
-                                            <line x1="7" y1="17" x2="17" y2="7"></line>
-                                            <polyline points="7 7 17 7 17 17"></polyline>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <!-- Real generated chart -->
-                                <img src="assets/plots/adr_trend.png" alt="Bali ADR Trend Analysis"
-                                    style="object-fit: contain; background: #0a0a0b; padding: 10px;">
-                            </div>
-                            <div class="project-info">
-                                <h3 class="project-title">Bali Hotel Revenue Analysis</h3>
-                                <p class="project-desc">Checking booking trends and prices for hotels in Bali using
-                                    Python.</p>
-                                <div class="project-tags">
-                                    <span class="tag">Python</span>
-                                    <span class="tag">Pandas</span>
-                                    <span class="tag">Visualization</span>
-                                </div>
-                            </div>
-                        </article>
-                    </a>
+                <!-- Carousel Container -->
+                <div class="carousel-container">
+                    <button class="carousel-btn carousel-prev" aria-label="Previous project">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
 
-                    <!-- Project 2: Web3 Analysis (New) -->
-                    <a href="project-web3.html" class="project-card-link">
-                        <article class="project-card">
-                            <div class="project-image">
-                                <div class="project-overlay">
-                                    <div class="icon-btn">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round">
-                                            <line x1="7" y1="17" x2="17" y2="7"></line>
-                                            <polyline points="7 7 17 7 17 17"></polyline>
-                                        </svg>
+                    <div class="carousel-wrapper">
+                        <div class="carousel-track">
+                            <!-- Project 1: Bali -->
+                            <a href="project-bali.html" class="project-card-link">
+                                <article class="project-card">
+                                    <div class="project-image">
+                                        <div class="project-overlay">
+                                            <div class="icon-btn">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round">
+                                                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                                                    <polyline points="7 7 17 7 17 17"></polyline>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <img src="assets/plots/adr_trend.png" alt="Bali ADR Trend Analysis"
+                                            style="object-fit: contain; background: #0a0a0b; padding: 10px;">
                                     </div>
-                                </div>
-                                <img src="assets/plots/web3_apr.png" alt="Uniswap Liquidity Analysis"
-                                    style="object-fit: contain; background: #0a0a0b; padding: 10px;">
-                            </div>
-                            <div class="project-info">
-                                <h3 class="project-title">Uniswap Liquidity Analysis</h3>
-                                <p class="project-desc">Analyzing profitability on the Ethereum blockchain using Python
-                                    & GraphQL.</p>
-                                <div class="project-tags">
-                                    <span class="tag">Web3</span>
-                                    <span class="tag">Python</span>
-                                    <span class="tag">DeFi</span>
-                                </div>
-                            </div>
-                        </article>
-                    </a>
+                                    <div class="project-info">
+                                        <h3 class="project-title">Bali Hotel Revenue Analysis</h3>
+                                        <p class="project-desc">Checking booking trends and prices for hotels in Bali
+                                            using
+                                            Python.</p>
+                                        <div class="project-tags">
+                                            <span class="tag">Python</span>
+                                            <span class="tag">Pandas</span>
+                                            <span class="tag">Visualization</span>
+                                        </div>
+                                    </div>
+                                </article>
+                            </a>
 
-                    <!-- Project 2.5: STR Competitive Analysis (New) -->
-                    <a href="project-str-competitive.html" class="project-card-link">
-                        <article class="project-card">
-                            <div class="project-image">
-                                <div class="project-overlay">
-                                    <div class="icon-btn">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round">
-                                            <line x1="7" y1="17" x2="17" y2="7"></line>
-                                            <polyline points="7 7 17 7 17 17"></polyline>
-                                        </svg>
+                            <!-- Project 2: Web3 -->
+                            <a href="project-web3.html" class="project-card-link">
+                                <article class="project-card">
+                                    <div class="project-image">
+                                        <div class="project-overlay">
+                                            <div class="icon-btn">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round">
+                                                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                                                    <polyline points="7 7 17 7 17 17"></polyline>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <img src="assets/plots/web3_apr.png" alt="Uniswap Liquidity Analysis"
+                                            style="object-fit: contain; background: #0a0a0b; padding: 10px;">
                                     </div>
-                                </div>
-                                <img src="assets/str_analysis/jakarta_str_indices.png" alt="STR Competitive Analysis"
-                                    style="object-fit: contain; background: #0a0a0b; padding: 10px;">
-                            </div>
-                            <div class="project-info">
-                                <h3 class="project-title">STR Competitive Analysis</h3>
-                                <p class="project-desc">Benchmarking Jakarta & Bali properties against competitive sets
-                                    using industry-standard STR methodology.</p>
-                                <div class="project-tags">
-                                    <span class="tag">Revenue Analytics</span>
-                                    <span class="tag">Python</span>
-                                    <span class="tag">Competitive Intelligence</span>
-                                </div>
-                            </div>
-                        </article>
-                    </a>
+                                    <div class="project-info">
+                                        <h3 class="project-title">Uniswap Liquidity Analysis</h3>
+                                        <p class="project-desc">Analyzing profitability on the Ethereum blockchain using
+                                            Python
+                                            & GraphQL.</p>
+                                        <div class="project-tags">
+                                            <span class="tag">Web3</span>
+                                            <span class="tag">Python</span>
+                                            <span class="tag">DeFi</span>
+                                        </div>
+                                    </div>
+                                </article>
+                            </a>
 
-                    <!-- Project 3: DeFi Protocol Analysis (New) -->
-                    <a href="project-defi.html" class="project-card-link">
-                        <article class="project-card">
-                            <div class="project-image">
-                                <div class="project-overlay">
-                                    <div class="icon-btn">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round">
-                                            <line x1="7" y1="17" x2="17" y2="7"></line>
-                                            <polyline points="7 7 17 7 17 17"></polyline>
-                                        </svg>
+                            <!-- Project 3: STR -->
+                            <a href="project-str-competitive.html" class="project-card-link">
+                                <article class="project-card">
+                                    <div class="project-image">
+                                        <div class="project-overlay">
+                                            <div class="icon-btn">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round">
+                                                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                                                    <polyline points="7 7 17 7 17 17"></polyline>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <img src="assets/str_analysis/jakarta_str_indices.png"
+                                            alt="STR Competitive Analysis"
+                                            style="object-fit: contain; background: #0a0a0b; padding: 10px;">
                                     </div>
-                                </div>
-                                <img src="defi_analysis/03_visualizations/top10_protocols.png" alt="DeFi TVL Analysis"
-                                    style="object-fit: contain; background: #0a0a0b; padding: 10px;">
-                            </div>
-                            <div class="project-info">
-                                <h3 class="project-title">DeFi Protocol Analysis</h3>
-                                <p class="project-desc">Analyzing $558B TVL across 7,000+ protocols with downloadable
-                                    data pipeline.</p>
-                                <div class="project-tags">
-                                    <span class="tag">DeFi</span>
-                                    <span class="tag">Python</span>
-                                    <span class="tag">API</span>
-                                </div>
-                            </div>
-                        </article>
-                    </a>
+                                    <div class="project-info">
+                                        <h3 class="project-title">STR Competitive Analysis</h3>
+                                        <p class="project-desc">Benchmarking Jakarta & Bali properties against
+                                            competitive sets
+                                            using industry-standard STR methodology.</p>
+                                        <div class="project-tags">
+                                            <span class="tag">Revenue Analytics</span>
+                                            <span class="tag">Python</span>
+                                            <span class="tag">Competitive Intelligence</span>
+                                        </div>
+                                    </div>
+                                </article>
+                            </a>
+
+                            <!-- Project 4: DeFi -->
+                            <a href="project-defi.html" class="project-card-link">
+                                <article class="project-card">
+                                    <div class="project-image">
+                                        <div class="project-overlay">
+                                            <div class="icon-btn">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round">
+                                                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                                                    <polyline points="7 7 17 7 17 17"></polyline>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <img src="defi_analysis/03_visualizations/top10_protocols.png"
+                                            alt="DeFi TVL Analysis"
+                                            style="object-fit: contain; background: #0a0a0b; padding: 10px;">
+                                    </div>
+                                    <div class="project-info">
+                                        <h3 class="project-title">DeFi Protocol Analysis</h3>
+                                        <p class="project-desc">Analyzing $558B TVL across 7,000+ protocols with
+                                            downloadable
+                                            data pipeline.</p>
+                                        <div class="project-tags">
+                                            <span class="tag">DeFi</span>
+                                            <span class="tag">Python</span>
+                                            <span class="tag">API</span>
+                                        </div>
+                                    </div>
+                                </article>
+                            </a>
+                        </div>
+                    </div>
+
+                    <button class="carousel-btn carousel-next" aria-label="Next project">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Carousel Dots -->
+                <div class="carousel-dots">
+                    <button class="dot active" aria-label="Go to project 1"></button>
+                    <button class="dot" aria-label="Go to project 2"></button>
+                    <button class="dot" aria-label="Go to project 3"></button>
+                    <button class="dot" aria-label="Go to project 4"></button>
                 </div>
             </div>
         </section>
