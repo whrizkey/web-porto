@@ -123,3 +123,71 @@ if (carouselTrack) {
 if (projectCards.length > 0) {
     updateCarousel();
 }
+
+// Scroll Reveal Animations
+const revealElements = document.querySelectorAll('.scroll-reveal');
+
+function checkScroll() {
+    revealElements.forEach(el => {
+        const elementTop = el.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        if (elementTop < windowHeight * 0.85) {
+            el.classList.add('revealed');
+        }
+    });
+}
+
+// Check on scroll and load
+window.addEventListener('scroll', checkScroll);
+window.addEventListener('load', checkScroll);
+
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href !== '#' && href.startsWith('#')) {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+    });
+});
+
+// Floating Background Elements
+const floatingContainer = document.getElementById('floatingElements');
+
+if (floatingContainer) {
+    const elements = [
+        { text: 'SELECT * FROM', type: 'symbol', delay: 0 },
+        { text: '📊', type: 'chart', delay: 2 },
+        { text: '42.8%', type: 'number', delay: 1 },
+        { text: 'WHERE', type: 'symbol', delay: 3 },
+        { text: '📈', type: 'chart', delay: 4 },
+        { text: 'GROUP BY', type: 'symbol', delay: 2 },
+        { text: '1,247', type: 'number', delay: 5 },
+        { text: '💹', type: 'chart', delay: 1 },
+        { text: 'SUM()', type: 'symbol', delay: 3 },
+        { text: '89.3', type: 'number', delay: 0 },
+        { text: 'JOIN', type: 'symbol', delay: 4 },
+        { text: '📉', type: 'chart', delay: 2 }
+    ];
+
+    elements.forEach((item, index) => {
+        const el = document.createElement('div');
+        el.className = `float-item float-${item.type}`;
+        el.textContent = item.text;
+
+        // Random positioning
+        el.style.left = `${Math.random() * 90}%`;
+        el.style.top = `${Math.random() * 80}%`;
+        el.style.animationDelay = `${item.delay}s`;
+
+        floatingContainer.appendChild(el);
+    });
+}
