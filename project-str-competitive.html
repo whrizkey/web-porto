@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=2">
+    <title>STR Competitive Analysis | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .project-header {
+            padding: var(--spacing-xl) 0 var(--spacing-lg);
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .project-meta {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            color: var(--text-accent);
+            font-family: var(--font-main);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.9rem;
+        }
+
+        .article-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .article-content h2 {
+            font-size: 2rem;
+            margin-top: var(--spacing-lg);
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-primary);
+        }
+
+        .article-content h3 {
+            font-size: 1.5rem;
+            margin-top: var(--spacing-md);
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-accent);
+        }
+
+        .article-content p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: var(--spacing-md);
+            line-height: 1.8;
+        }
+
+        .chart-container {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+
+        .chart-container img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .chart-caption {
+            display: block;
+            margin-top: var(--spacing-sm);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-style: italic;
+            text-align: center;
+        }
+
+        .insight-box {
+            background: rgba(42, 157, 143, 0.1);
+            border-left: 4px solid #2A9D8F;
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .insight-box h4 {
+            color: #2A9D8F;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .warning-box {
+            background: rgba(233, 116, 81, 0.1);
+            border-left: 4px solid #E97451;
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .warning-box h4 {
+            color: #E97451;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+
+        .metric-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: var(--spacing-md);
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .market-tabs {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .tab-btn {
+            padding: 0.75rem 1.5rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .tab-btn.active {
+            background: var(--text-accent);
+            color: white;
+            border-color: var(--text-accent);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Portfolio.</a>
+            <a href="index.html#work" class="btn-outline">← Back to Projects</a>
+        </div>
+    </nav>
+
+    <main>
+        <article class="container">
+            <header class="project-header">
+                <div class="project-meta"><span>Revenue Management & Competitive
+                        Intelligence</span><span>•</span><span>Feb 2026</span></div>
+                <h1 class="hero-title">STR Competitive Analysis:<br>Jakarta vs Bali</h1>
+                <p class="hero-subtitle">Using Smith Travel Research (STR) methodology to benchmark performance against
+                    competitive sets and identify revenue optimization opportunities.</p>
+            </header>
+
+            <div class="article-content">
+                <h2>The Challenge</h2>
+                <p>
+                    Revenue managers often rely on gut feel or incomplete data when making pricing decisions. Without
+                    proper competitive benchmarking, you're flying blind—you don't know if you're leaving money on the
+                    table or pricing yourself out of the market.
+                </p>
+                <p>
+                    I analyzed two luxury properties (Jakarta and Bali) using <strong>STR STAR Report
+                        methodology</strong>, the industry gold standard for competitive intelligence. The goal:
+                    identify where we're winning, where we're losing, and what's driving the gaps.
+                </p>
+
+                <h2>Data & Methodology</h2>
+                <p>
+                    <strong>Scope:</strong> 2 years of data (2024-2025), daily granularity<br>
+                    <strong>Properties:</strong>
+                </p>
+                <ul style="color: var(--text-secondary); margin-left: 2rem; margin-bottom: 2rem;">
+                    <li>Jakarta: 280-room business hotel (Property_JAK_001)</li>
+                    <li>Bali: 180-room luxury resort (Property_BAL_001)</li>
+                </ul>
+                <p>
+                    <strong>Competitive Framework:</strong>
+                </p>
+                <ul style="color: var(--text-secondary); margin-left: 2rem; margin-bottom: 2rem;">
+                    <li><strong>Competitive Set</strong>: 5-7 direct competitors with similar pricing/positioning</li>
+                    <li><strong>Market</strong>: All luxury hotels in the area (broader benchmark)</li>
+                    <li><strong>STR Indices</strong>: MPI (occupancy), ARI (rate), RGI (revenue)</li>
+                </ul>
+
+                <!-- Market Selection -->
+                <div class="market-tabs">
+                    <button class="tab-btn active" onclick="switchMarket('jakarta')">Jakarta Analysis</button>
+                    <button class="tab-btn" onclick="switchMarket('bali')">Bali Analysis</button>
+                </div>
+
+                <!-- Jakarta Content -->
+                <div id="jakarta-content" class="tab-content active">
+                    <h2>Jakarta: Business Hotel</h2>
+
+                    <div class="metric-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">59.8%</div>
+                            <div class="metric-label">Avg Occupancy 2025</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">3.0M</div>
+                            <div class="metric-label">Avg ADR (IDR)</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">1.8M</div>
+                            <div class="metric-label">Avg RevPAR (IDR)</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value" style="color: #E97451;">89</div>
+                            <div class="metric-label">RGI (Underperforming)</div>
+                        </div>
+                    </div>
+
+                    <h3>1. Absolute Performance</h3>
+                    <div class="chart-container">
+                        <img src="assets/str_analysis/jakarta_absolute_performance.png" alt="Jakarta Performance">
+                        <span class="chart-caption">Fig 1: Jakarta occupancy shows corporate seasonality—drops in
+                            holiday months (Dec/Jan, Jul/Aug).</span>
+                    </div>
+
+                    <h3>2. Competitive Position</h3>
+                    <div class="chart-container">
+                        <img src="assets/str_analysis/jakarta_str_indices.png" alt="Jakarta STR Indices">
+                        <span class="chart-caption">Fig 2: Consistently below fair share (100). RGI averaging 89 means
+                            we capture 11% less revenue than our fair share.</span>
+                    </div>
+
+                    <div class="warning-box">
+                        <h4>⚠️ Key Problem: Underperformance vs CompSet</h4>
+                        <p>Our property generates <strong>11% less revenue</strong> than the competitive set despite
+                            having similar rooms. This is a <strong>volume problem</strong>, not a rate problem—our ARI
+                            (92) shows we're pricing competitively, but MPI (94) indicates we're losing occupancy.</p>
+                    </div>
+
+                    <h3>3. Year-over-Year Trends</h3>
+                    <div class="chart-container">
+                        <img src="assets/str_analysis/jakarta_yoy_comparison.png" alt="Jakarta YoY">
+                        <span class="chart-caption">Fig 3: Flat growth YoY (-0.1%). Market is shifting but we're not
+                            capturing it.</span>
+                    </div>
+
+                    <h3>4. Day-of-Week Patterns</h3>
+                    <div class="chart-container">
+                        <img src="assets/str_analysis/jakarta_day_of_week.png" alt="Jakarta DOW">
+                        <span class="chart-caption">Fig 4: Strong Mon-Thu (corporate demand), severe weekend softness.
+                            Opportunity to boost weekend leisure packages.</span>
+                    </div>
+
+                    <h3>5. Segment Mix</h3>
+                    <div class="chart-container">
+                        <img src="assets/str_analysis/jakarta_segment_mix.png" alt="Jakarta Segments">
+                        <span class="chart-caption">Fig 5: Heavy reliance on Group segment (48%). Diversification needed
+                            to reduce MICE volatility.</span>
+                    </div>
+
+                    <h3>6. Market Gaps</h3>
+                    <div class="chart-container">
+                        <img src="assets/str_analysis/jakarta_market_gaps.png" alt="Jakarta Market Gaps">
+                        <span class="chart-caption">Fig 6: CompSet consistently outperforms us in occupancy. ADR is
+                            competitive, so the issue is demand generation, not pricing.</span>
+                    </div>
+
+                    <div class="insight-box">
+                        <h4>💡 Jakarta Recommendations</h4>
+                        <ul style="margin-left: 1.5rem;">
+                            <li><strong>Fix the Occupancy Gap:</strong> Invest in demand generation (corporate sales,
+                                GDS visibility)</li>
+                            <li><strong>Weekend Strategy:</strong> Launch weekend leisure packages to fill Fri-Sun holes
+                            </li>
+                            <li><strong>Segment Diversification:</strong> Reduce Group dependence to 35-40%, grow
+                                Transient</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Bali Content -->
+                <div id="bali-content" class="tab-content">
+                    <h2>Bali: Luxury Resort</h2>
+
+                    <div class="metric-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">81.3%</div>
+                            <div class="metric-label">Avg Occupancy 2025</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">6.2M</div>
+                            <div class="metric-label">Avg ADR (IDR)</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">5.1M</div>
+                            <div class="metric-label">Avg RevPAR (IDR)</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value" style="color: #E97451;">87</div>
+                            <div class="metric-label">RGI (Underperforming)</div>
+                        </div>
+                    </div>
+
+                    <h3>1. Absolute Performance</h3>
+                    <div class="chart-container">
+                        <img src="assets/str_analysis/bali_absolute_performance.png" alt="Bali Performance">
+                        <span class="chart-caption">Fig 1: Strong leisure seasonality. Peak in Jun-Sep and Dec (summer +
+                            holidays).</span>
+                    </div>
+
+                    <h3>2. Competitive Position</h3>
+                    <div class="chart-container">
+                        <img src="assets/str_analysis/bali_str_indices.png" alt="Bali STR Indices">
+                        <span class="chart-caption">Fig 2: RGI of 87 = losing 13% revenue vs fair share. Both rate and
+                            volume issues.</span>
+                    </div>
+
+                    <div class="warning-box">
+                        <h4>⚠️ Key Problem: Both Rate & Volume Gaps</h4>
+                        <p>Bali's issue is <strong>dual-factor</strong>: MPI of 94 (losing occupancy) AND ARI of 93
+                            (pricing too low relative to value). CompSet is commanding premium rates while maintaining
+                            higher occupancy.</p>
+                    </div>
+
+                    <h3>3. Year-over-Year Trends</h3>
+                    <div class="chart-container">
+                        <img src="assets/str_analysis/bali_yoy_comparison.png" alt="Bali YoY">
+                        <span class="chart-caption">Fig 3: Slight YoY growth (+1.2% RevPAR), but not keeping pace with
+                            market recovery.</span>
+                    </div>
+
+                    <h3>4. Day-of-Week Patterns</h3>
+                    <div class="chart-container">
+                        <img src="assets/str_analysis/bali_day_of_week.png" alt="Bali DOW">
+                        <span class="chart-caption">Fig 4: Weekends stronger (leisure check-ins Fri/Sat), but
+                            opportunity to fill mid-week shoulder.</span>
+                    </div>
+
+                    <h3>5. Segment Mix</h3>
+                    <div class="chart-container">
+                        <img src="assets/str_analysis/bali_segment_mix.png" alt="Bali Segments">
+                        <span class="chart-caption">Fig 5: 75% Transient (good for a resort). Minimal Group dependency =
+                            stable revenue.</span>
+                    </div>
+
+                    <h3>6. Market Gaps</h3>
+                    <div class="chart-container">
+                        <img src="assets/str_analysis/bali_market_gaps.png" alt="Bali Market Gaps">
+                        <span class="chart-caption">Fig 6: CompSet beats us on both ADR AND occupancy throughout the
+                            year. Signal of brand/positioning weakness.</span>
+                    </div>
+
+                    <div class="insight-box">
+                        <h4>💡 Bali Recommendations</h4>
+                        <ul style="margin-left: 1.5rem;">
+                            <li><strong>Rate Confidence:</strong> Increase ADR by +5-8% during peak season—we're
+                                underpricing vs value</li>
+                            <li><strong>Mid-Week Promotion:</strong> "Extended Stay" offers (Sun-Thu) to smooth
+                                occupancy</li>
+                            <li><strong>Brand Elevation:</strong> Invest in property upgrades and marketing to justify
+                                premium positioning</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h2>What I Learned</h2>
+                <p>
+                    STR competitive analysis reveals problems that top-line metrics hide. Both properties looked "fine"
+                    at surface level (occupancy in the 60-80% range, consistent ADR), but the <strong>indices told the
+                        real story</strong>: we're losing market share to competitors.
+                </p>
+                <p>
+                    The fix isn't the same for both markets:
+                </p>
+                <ul style="color: var(--text-secondary); margin-left: 2rem; margin-bottom: 2rem;">
+                    <li><strong>Jakarta</strong> = Distribution problem (need more visibility)</li>
+                    <li><strong>Bali</strong> = Pricing + positioning problem (undervalued product)</li>
+                </ul>
+                <p>
+                    This is the power of competitive intelligence—it tells you <em>where</em> to focus, not just
+                    <em>that</em> there's a problem.
+                </p>
+            </div>
+        </article>
+
+        <section class="section-padding" style="border-top: 1px solid var(--border-color); margin-top: 4rem;">
+            <div class="container" style="text-align: center;">
+                <h3 style="margin-bottom: 1rem;">Need competitive intelligence for your property?</h3>
+                <a href="mailto:rizky.afrizal@icloud.com" class="btn-primary">Let's Talk</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function switchMarket(market) {
+            // Update tabs
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Update content
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(market + '-content').classList.add('active');
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function () {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+
+</html>
