@@ -27,7 +27,7 @@
         rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="css/style.css?v=4.0">
+    <link rel="stylesheet" href="css/style.css?v=5.0">
 </head>
 
 <body>
@@ -36,59 +36,83 @@
     <nav class="navbar" id="navbar">
         <div class="container">
             <a href="#" class="logo">Portfolio.</a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
             <ul class="nav-links">
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#work" class="nav-link">Work</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
-                <li id="desktop-cta"><a href="assets/resume.pdf" class="btn-primary">Resume</a></li>
+                <!-- Mobile Only CTA in Menu -->
+                <li style="margin-top: auto;"><a href="mailto:rizky.afrizal@icloud.com" class="btn-primary"
+                        style="width:100%; text-align:center; display:none;">Let's Talk</a></li>
             </ul>
-            <button class="mobile-menu-btn">☰</button>
+            <a href="Rizky%20Afrizal%20-%20Resume%20pdf.pdf" download class="btn-outline"
+                style="margin-right: 1rem;">Resume</a>
+            <a href="mailto:rizky.afrizal@icloud.com" class="btn-primary" id="desktop-cta">Let's Talk</a>
         </div>
     </nav>
 
     <!-- Interactive Particle Canvas -->
     <canvas id="particleCanvas" class="particle-canvas"></canvas>
 
+    <!-- Floating Background Elements -->
+    <div class="floating-elements" id="floatingElements"></div>
+
+
+
     <main>
 
-        <!-- Hero/About Section - Sukumar Style -->
-        <section class="hero-section" id="about">
+
+        <!-- About Section -->
+        <section class="section-padding scroll-reveal" id="about" style="padding-top: 8rem;">
             <div class="container">
-                <!-- Main Headline -->
-                <div class="hero-content">
-                    <span class="hero-label">DATA ANALYST</span>
-                    <h1 class="hero-name">RIZKY<br>AFRIZAL</h1>
-                    <p class="hero-bio">I enjoy working with data and turning it into useful insights that help teams
-                        with reporting and planning. I like organizing information, spotting patterns, and making data
-                        easier to understand.</p>
-
-                    <div class="hero-cta">
-                        <a href="mailto:rizky.afrizal@icloud.com" class="btn-hero-primary">LET'S TALK</a>
-                        <a href="Rizky%20Afrizal%20-%20Resume%20pdf.pdf" download class="btn-hero-outline">DOWNLOAD
-                            RÉSUMÉ</a>
+                <div class="about-grid">
+                    <div class="about-content">
+                        <div class="section-header">
+                            <span class="section-label">About Me</span>
+                            <h2 class="section-title">I like making data <br> easy to understand.</h2>
+                        </div>
+                        <div class="about-text">
+                            <p>I enjoy working with data and turning it into useful insights that help the team with
+                                reporting and planning. I like organizing information, spotting patterns, and making
+                                data easier to understand so it can support better decisions.</p>
+                        </div>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <h4>Tools</h4>
+                                <span>SQL, Python, Excel, Tableau, Power BI</span>
+                            </div>
+                            <div class="stat-item">
+                                <h4>Systems</h4>
+                                <span>CRM, Opera (PMS), RMS, Marsha</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-
-                <!-- Skills Grid - Minimal Style -->
-                <div class="skills-minimal">
-                    <div class="skill-group">
-                        <span class="skill-label">TOOLS</span>
-                        <p class="skill-list">SQL · Python · Excel · Tableau · Power BI</p>
-                    </div>
-                    <div class="skill-group">
-                        <span class="skill-label">SYSTEMS</span>
-                        <p class="skill-list">CRM · Opera (PMS) · RMS · Marsha</p>
+                    <!-- Decorative/Image side -->
+                    <div class="about-visual"
+                        style="background: var(--bg-secondary); border-radius: 20px; height: 400px; border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+                        <div
+                            style="position: absolute; width: 100%; height: 100%; background: radial-gradient(circle at center, rgba(42, 157, 143, 0.1) 0%, transparent 70%);">
+                        </div>
+                        <img src="assets/plots/tableau_dashboard_mockup.png" alt="Revenue Analyst Dashboard Interface"
+                            style="width: 100%; height: 100%; object-fit: cover; opacity: 0.9; z-index: 1;">
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Projects Section -->
-        <section class="projects-section" id="work">
+        <section class="section-padding scroll-reveal" id="work">
             <div class="container">
-                <div class="section-header-minimal">
-                    <span class="section-label-minimal">PORTFOLIO</span>
-                    <h2 class="section-title-minimal">My Projects</h2>
+                <div class="section-header">
+                    <span class="section-label">Portfolio</span>
+                    <h2 class="section-title">My Projects</h2>
                 </div>
 
                 <!-- Carousel Container -->
@@ -121,8 +145,7 @@
                                     </div>
                                     <div class="project-info">
                                         <h3 class="project-title">Bali Hotel Revenue Analysis</h3>
-                                        <p class="project-desc">Checking booking trends and prices for hotels in
-                                            Bali
+                                        <p class="project-desc">Checking booking trends and prices for hotels in Bali
                                             using
                                             Python.</p>
                                         <div class="project-tags">
@@ -153,8 +176,7 @@
                                     </div>
                                     <div class="project-info">
                                         <h3 class="project-title">Uniswap Liquidity Analysis</h3>
-                                        <p class="project-desc">Analyzing profitability on the Ethereum blockchain
-                                            using
+                                        <p class="project-desc">Analyzing profitability on the Ethereum blockchain using
                                             Python
                                             & GraphQL.</p>
                                         <div class="project-tags">
@@ -251,11 +273,15 @@
         </section>
 
         <!-- Contact Section -->
-        <section class="contact-section" id="contact">
+        <section class="section-padding scroll-reveal" id="contact">
             <div class="container">
-                <h2 class="contact-title">Let's Work Together</h2>
-                <p class="contact-subtitle">I'm open to new opportunities and collaborations</p>
-                <a href="mailto:rizky.afrizal@icloud.com" class="contact-email">rizky.afrizal@icloud.com</a>
+                <div class="contact-cta">
+                    <h2 class="contact-title">Want to work together?</h2>
+                    <p class="contact-text">
+                        I am open to new opportunities. Feel free to reach out!
+                    </p>
+                    <a href="mailto:rizky.afrizal@icloud.com" class="btn-primary">Send me an Email</a>
+                </div>
             </div>
         </section>
 
@@ -267,7 +293,7 @@
         </div>
     </footer>
 
-    <script src="js/app.js?v=4.0"></script>
+    <script src="js/app.js?v=5.0"></script>
 </body>
 
 </html>
