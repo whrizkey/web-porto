@@ -170,17 +170,21 @@ button:focus,
     transform: translateY(0);
 }
 
-/* Floating Background Elements */
-.floating-elements {
+/* Interactive Particle Canvas */
+.particle-canvas {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: -1;
-    /* Make sure it's strictly behind everything */
-    overflow: hidden;
+    z-index: 1;
+    opacity: 0.6;
+}
+
+/* Parallax Sections */
+.parallax-section {
+    transition: transform 0.3s ease-out;
 }
 
 /* Utilities */

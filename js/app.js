@@ -159,35 +159,134 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Floating Background Elements (Abstract Shapes with new Palette)
-const floatingContainer = document.getElementById('floatingElements');
+// Interactive Particle System
+const canvas = document.getElementById('particleCanvas');
+const ctx = canvas.getContext('2d');
 
-if (floatingContainer) {
-    const items = [
-        { color: 'var(--accent-orange)', size: '40vh', top: '10%', left: '10%', delay: 0 },
-        { color: 'var(--accent-peach)', size: '35vh', top: '60%', left: '80%', delay: 5 },
-        { color: 'var(--accent-sage)', size: '30vh', top: '40%', left: '40%', delay: 2 },
-        { color: 'var(--accent-rose)', size: '45vh', top: '80%', left: '20%', delay: 7 }
-    ];
-
-    items.forEach((item, index) => {
-        const el = document.createElement('div');
-        el.style.position = 'absolute';
-        el.style.width = item.size;
-        el.style.height = item.size;
-        el.style.background = item.color;
-        el.style.borderRadius = '50%';
-        el.style.filter = 'blur(100px)'; // Heavy blur for "mesh" effect
-        el.style.opacity = '0.08'; // Very subtle
-        el.style.zIndex = '-1';
-        el.style.top = item.top;
-        el.style.left = item.left;
-        el.style.animation = `float ${20 + index * 5}s ease-in-out infinite`;
-        el.style.animationDelay = `${item.delay}s`;
-
-        floatingContainer.appendChild(el);
-    });
+// Set canvas size
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 }
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+// Mouse position
+let mouse = {
+    x: null,
+    y: null,
+    radius: 150 // Area of effect around mouse
+};
+
+window.addEventListener('mousemove', (e) => {
+    mouse.x = e.x;
+    mouse.y = e.y;
+});
+
+// Particle class
+class Particle {
+    constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 3 + 1;
+        this.baseX = this.x;
+        this.baseY = this.y;
+        this.density = (Math.random() * 30) + 1;
+        this.speedX = (Math.random() - 0.5) * 0.5;
+        this.speedY = (Math.random() - 0.5) * 0.5;
+
+        // Color variations (peach/orange theme)
+        const colors = ['#FF926B', '#E6B9A6', '#E19898'];
+        this.color = colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    draw() {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.closePath();
+        ctx.fill();
+
+        // Add glow effect
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = this.color;
+    }
+
+    update() {
+        // Gentle floating motion
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        // Mouse interaction - particles get pushed away
+        if (mouse.x != null && mouse.y != null) {
+            let dx = mouse.x - this.x;
+            let dy = mouse.y - this.y;
+            let distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < mouse.radius) {
+                let force = (mouse.radius - distance) / mouse.radius;
+                let directionX = dx / distance;
+                let directionY = dy / distance;
+
+                // Push away from mouse
+                this.x -= directionX * force * 3;
+                this.y -= directionY * force * 3;
+            }
+        }
+
+        // Slowly return to base position
+        this.x += (this.baseX - this.x) * 0.02;
+        this.y += (this.baseY - this.y) * 0.02;
+
+        // Wrap around edges
+        if (this.x < 0) this.x = canvas.width;
+        if (this.x > canvas.width) this.x = 0;
+        if (this.y < 0) this.y = canvas.height;
+        if (this.y > canvas.height) this.y = 0;
+
+        this.draw();
+    }
+}
+
+// Create particles
+let particlesArray = [];
+const numberOfParticles = 80;
+
+function init() {
+    particlesArray = [];
+    for (let i = 0; i < numberOfParticles; i++) {
+        particlesArray.push(new Particle());
+    }
+}
+init();
+
+// Animation loop
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (let i = 0; i < particlesArray.length; i++) {
+        particlesArray[i].update();
+    }
+
+    requestAnimationFrame(animate);
+}
+animate();
+
+// Parallax Effect for sections
+let parallaxSections = document.querySelectorAll('.about-visual, .project-card');
+
+window.addEventListener('mousemove', (e) => {
+    let mouseX = e.clientX / window.innerWidth;
+    let mouseY = e.clientY / window.innerHeight;
+
+    parallaxSections.forEach((section, index) => {
+        let depth = index % 2 === 0 ? 10 : -10;
+        let moveX = (mouseX - 0.5) * depth;
+        let moveY = (mouseY - 0.5) * depth;
+
+        section.style.transform = `translate(${moveX}px, ${moveY}px)`;
+    });
+});
 
 // Animated Data Counters
 const metricNumbers = document.querySelectorAll('.metric-number');
