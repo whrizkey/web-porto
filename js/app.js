@@ -195,8 +195,8 @@ class Particle {
         this.speedX = (Math.random() - 0.5) * 0.5;
         this.speedY = (Math.random() - 0.5) * 0.5;
 
-        // Color variations (peach/orange theme)
-        const colors = ['#FF926B', '#E6B9A6', '#E19898'];
+        // Color variations (orange theme only)
+        const colors = ['#FF6B35', '#FF8555', '#FF9F70'];
         this.color = colors[Math.floor(Math.random() * colors.length)];
     }
 
