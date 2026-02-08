@@ -188,3 +188,48 @@ if (floatingContainer) {
         floatingContainer.appendChild(el);
     });
 }
+
+// Animated Data Counters
+const metricNumbers = document.querySelectorAll('.metric-number');
+let countersAnimated = false;
+
+function animateCounters() {
+    if (countersAnimated) return;
+
+    metricNumbers.forEach(counter => {
+        const target = parseInt(counter.getAttribute('data-target'));
+        const duration = 2000; // 2 seconds
+        const increment = target / (duration / 16); // 60fps
+        let current = 0;
+
+        const updateCounter = () => {
+            current += increment;
+            if (current < target) {
+                counter.textContent = Math.floor(current);
+                requestAnimationFrame(updateCounter);
+            } else {
+                counter.textContent = target;
+            }
+        };
+
+        updateCounter();
+    });
+
+    countersAnimated = true;
+}
+
+// Trigger counter animation when metrics section is in view
+function checkMetrics() {
+    const metricsSection = document.querySelector('.metrics-showcase');
+    if (metricsSection) {
+        const rect = metricsSection.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+
+        if (rect.top < windowHeight * 0.8) {
+            animateCounters();
+        }
+    }
+}
+
+window.addEventListener('scroll', checkMetrics);
+window.addEventListener('load', checkMetrics);

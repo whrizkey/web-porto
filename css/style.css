@@ -408,6 +408,116 @@ button:focus,
     font-size: 0.9rem;
 }
 
+/* Metrics Showcase - Analytical & Fun */
+.metrics-showcase {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-sm);
+    margin: var(--spacing-md) 0;
+    padding: var(--spacing-md);
+    background: linear-gradient(135deg, rgba(255, 146, 107, 0.05) 0%, rgba(225, 152, 152, 0.05) 100%);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 146, 107, 0.2);
+}
+
+.metric-box {
+    text-align: center;
+    padding: var(--spacing-sm);
+    position: relative;
+    transition: var(--transition-smooth);
+}
+
+.metric-box:hover {
+    transform: translateY(-5px);
+}
+
+.metric-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background: var(--accent-orange);
+    opacity: 0;
+    transition: var(--transition-fast);
+}
+
+.metric-box:hover::before {
+    opacity: 1;
+}
+
+.metric-number {
+    font-size: 3rem;
+    font-weight: 800;
+    font-family: var(--font-main);
+    background: linear-gradient(135deg, var(--accent-orange), var(--accent-peach));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    line-height: 1;
+}
+
+.metric-suffix {
+    font-size: 1.5rem;
+    color: var(--accent-rose);
+    font-weight: 600;
+    display: inline-block;
+    margin-left: -0.5rem;
+}
+
+.metric-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+}
+
+/* Animated Chart Background */
+.animated-chart-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        repeating-linear-gradient(0deg,
+            transparent,
+            transparent 20px,
+            rgba(255, 146, 107, 0.02) 20px,
+            rgba(255, 146, 107, 0.02) 40px),
+        repeating-linear-gradient(90deg,
+            transparent,
+            transparent 20px,
+            rgba(255, 146, 107, 0.02) 20px,
+            rgba(255, 146, 107, 0.02) 40px);
+    animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(40px, 40px);
+    }
+}
+
+/* Mobile Metrics */
+@media (max-width: 768px) {
+    .metrics-showcase {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xs);
+    }
+
+    .metric-number {
+        font-size: 2.5rem;
+    }
+}
+
+
 /* Projects Grid */
 .projects-grid {
     display: grid;
