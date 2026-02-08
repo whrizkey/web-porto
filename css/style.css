@@ -157,7 +157,7 @@ body {
     display: flex;
     gap: 1.5rem;
     padding: 0 3rem;
-    animation: scroll 30s linear infinite;
+    animation: scroll 15s linear infinite;
     width: fit-content;
 }
 
