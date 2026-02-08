@@ -1,18 +1,14 @@
 /*
  * Portfolio - One Page Layout (Sukumar-inspired)
- * Black Theme + Orange Accent
  */
 
 :root {
-    /* Colors - Orange + Black */
     --bg-primary: #0a0a0b;
     --text-primary: #ffffff;
     --text-secondary: #a1a1aa;
     --accent-orange: #FF6B35;
     --accent-orange-hover: #FF8555;
     --border-color: #27272a;
-
-    /* Typography */
     --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
 }
@@ -27,7 +23,6 @@ html,
 body {
     height: 100%;
     overflow: hidden;
-    /* No vertical scrolling */
 }
 
 body {
@@ -48,37 +43,41 @@ body {
     opacity: 0.4;
 }
 
-/* Navbar - Minimal */
+/* Navbar */
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    padding: 1.5rem 2rem;
+    padding: 1.5rem 3rem;
     z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: rgba(10, 10, 11, 0.8);
+    backdrop-filter: blur(10px);
 }
 
 .logo {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 700;
     color: var(--text-primary);
     text-decoration: none;
+    letter-spacing: 0.05em;
 }
 
 .nav-links {
     display: flex;
-    gap: 2rem;
+    gap: 2.5rem;
     list-style: none;
 }
 
 .nav-link {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: var(--text-secondary);
     text-decoration: none;
     transition: color 0.2s;
+    letter-spacing: 0.05em;
 }
 
 .nav-link:hover {
@@ -102,9 +101,10 @@ body {
 .top-bar {
     display: flex;
     justify-content: space-between;
-    padding: 1.5rem 2rem;
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
+    padding: 1.5rem 3rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    margin-top: 60px;
 }
 
 .role-label {
@@ -135,7 +135,7 @@ body {
     color: var(--text-primary);
 }
 
-/* Horizontal Projects Carousel */
+/* Auto-Scrolling Carousel */
 .horizontal-carousel {
     width: 100%;
     overflow: hidden;
@@ -147,26 +147,34 @@ body {
 .horizontal-scroll {
     display: flex;
     gap: 1.5rem;
-    padding: 0 2rem;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    scrollbar-width: none;
-    /* Firefox */
+    padding: 0 3rem;
+    animation: scroll 40s linear infinite;
+    width: fit-content;
 }
 
-.horizontal-scroll::-webkit-scrollbar {
-    display: none;
-    /* Chrome/Safari */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-100% - 1.5rem));
+    }
+}
+
+.horizontal-scroll:hover {
+    animation-play-state: paused;
 }
 
 .project-thumbnail {
-    flex: 0 0 400px;
-    height: 250px;
+    flex: 0 0 380px;
+    height: 240px;
     position: relative;
     overflow: hidden;
     border: 1px solid var(--border-color);
     text-decoration: none;
     transition: border-color 0.3s;
+    background: #000;
 }
 
 .project-thumbnail:hover {
@@ -176,8 +184,9 @@ body {
 .project-thumbnail img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     transition: transform 0.3s;
+    background: #000;
 }
 
 .project-thumbnail:hover img {
@@ -194,46 +203,49 @@ body {
 }
 
 .project-overlay-label span {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     letter-spacing: 0.1em;
     color: var(--text-primary);
     text-transform: uppercase;
     font-weight: 600;
 }
 
-/* Name Section */
+/* Bottom Section - Name Left, Bio Right */
 .name-section {
     flex: 1;
     display: flex;
-    align-items: center;
-    padding: 0 2rem 4rem 2rem;
+    align-items: flex-end;
+    padding: 0 3rem 4rem 3rem;
 }
 
 .name-container {
     width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
     gap: 4rem;
-    align-items: center;
 }
 
+/* Name Bottom Left */
 .main-name {
     font-family: var(--font-display);
-    font-size: clamp(4rem, 12vw, 10rem);
+    font-size: clamp(4rem, 10vw, 9rem);
     font-weight: 900;
-    line-height: 0.9;
+    line-height: 0.85;
     letter-spacing: -0.02em;
     text-transform: uppercase;
+    flex-shrink: 0;
 }
 
+/* Bio Bottom Right */
 .bio-section {
     max-width: 500px;
+    flex-shrink: 0;
+    padding-bottom: 0.5rem;
 }
 
 .bio-text {
-    font-size: 1.125rem;
+    font-size: 1rem;
     line-height: 1.8;
     color: var(--text-secondary);
     margin-bottom: 2rem;
@@ -250,11 +262,11 @@ body {
 }
 
 .btn-contact {
-    padding: 1rem 2.5rem;
+    padding: 0.9rem 2.5rem;
     background: var(--accent-orange);
     color: #000;
     font-weight: 700;
-    font-size: 0.875rem;
+    font-size: 0.8rem;
     letter-spacing: 0.05em;
     text-decoration: none;
     text-transform: uppercase;
@@ -269,19 +281,33 @@ body {
 
 /* Mobile */
 @media (max-width: 768px) {
+    .navbar {
+        padding: 1rem 1.5rem;
+    }
+
     .top-bar {
         flex-direction: column;
         gap: 0.5rem;
         text-align: center;
+        padding: 1rem 1.5rem;
+    }
+
+    .name-section {
+        padding: 0 1.5rem 2rem 1.5rem;
     }
 
     .name-container {
-        grid-template-columns: 1fr;
+        flex-direction: column;
+        align-items: flex-start;
         gap: 2rem;
     }
 
     .main-name {
-        font-size: clamp(3rem, 10vw, 5rem);
+        font-size: clamp(3rem, 12vw, 5rem);
+    }
+
+    .bio-section {
+        max-width: 100%;
     }
 
     .project-thumbnail {
