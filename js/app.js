@@ -159,33 +159,30 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Floating Background Elements
+// Floating Background Elements (Abstract Shapes with new Palette)
 const floatingContainer = document.getElementById('floatingElements');
 
 if (floatingContainer) {
-    const elements = [
-        { text: 'SELECT * FROM', type: 'symbol', delay: 0 },
-        { text: '📊', type: 'chart', delay: 2 },
-        { text: '42.8%', type: 'number', delay: 1 },
-        { text: 'WHERE', type: 'symbol', delay: 3 },
-        { text: '📈', type: 'chart', delay: 4 },
-        { text: 'GROUP BY', type: 'symbol', delay: 2 },
-        { text: '1,247', type: 'number', delay: 5 },
-        { text: '💹', type: 'chart', delay: 1 },
-        { text: 'SUM()', type: 'symbol', delay: 3 },
-        { text: '89.3', type: 'number', delay: 0 },
-        { text: 'JOIN', type: 'symbol', delay: 4 },
-        { text: '📉', type: 'chart', delay: 2 }
+    const items = [
+        { color: 'var(--accent-orange)', size: '40vh', top: '10%', left: '10%', delay: 0 },
+        { color: 'var(--accent-peach)', size: '35vh', top: '60%', left: '80%', delay: 5 },
+        { color: 'var(--accent-sage)', size: '30vh', top: '40%', left: '40%', delay: 2 },
+        { color: 'var(--accent-rose)', size: '45vh', top: '80%', left: '20%', delay: 7 }
     ];
 
-    elements.forEach((item, index) => {
+    items.forEach((item, index) => {
         const el = document.createElement('div');
-        el.className = `float-item float-${item.type}`;
-        el.textContent = item.text;
-
-        // Random positioning
-        el.style.left = `${Math.random() * 90}%`;
-        el.style.top = `${Math.random() * 80}%`;
+        el.style.position = 'absolute';
+        el.style.width = item.size;
+        el.style.height = item.size;
+        el.style.background = item.color;
+        el.style.borderRadius = '50%';
+        el.style.filter = 'blur(100px)'; // Heavy blur for "mesh" effect
+        el.style.opacity = '0.08'; // Very subtle
+        el.style.zIndex = '-1';
+        el.style.top = item.top;
+        el.style.left = item.left;
+        el.style.animation = `float ${20 + index * 5}s ease-in-out infinite`;
         el.style.animationDelay = `${item.delay}s`;
 
         floatingContainer.appendChild(el);
