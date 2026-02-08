@@ -27,7 +27,7 @@
         rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="css/style.css?v=7.0">
+    <link rel="stylesheet" href="css/style.css?v=8.0">
 </head>
 
 <body>
@@ -43,127 +43,123 @@
                     <line x1="3" y1="6" x2="21" y2="6"></line>
                     <line x1="3" y1="18" x2="21" y2="18"></line>
                 </svg>
-            </button>
-            <ul class="nav-links">
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#work" class="nav-link">Work</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-                <!-- Mobile Only CTA in Menu -->
-                <li style="margin-top: auto;"><a href="mailto:rizky.afrizal@icloud.com" class="btn-primary"
-                        style="width:100%; text-align:center; display:none;">Let's Talk</a></li>
-            </ul>
-            <a href="Rizky%20Afrizal%20-%20Resume%20pdf.pdf" download class="btn-outline"
-                style="margin-right: 1rem;">Resume</a>
-            <a href="mailto:rizky.afrizal@icloud.com" class="btn-primary" id="desktop-cta">Let's Talk</a>
-        </div>
-    </nav>
-
-    <!-- Interactive Particle Canvas -->
-    <canvas id="particleCanvas" class="particle-canvas"></canvas>
-
-    <!-- Floating Background Elements -->
-    <div class="floating-elements" id="floatingElements"></div>
-
-
-    <main class="one-page-layout">
-
-        <!-- Top Info Bar -->
-        <div class="top-bar">
-            <div class="top-left">
-                <span class="role-label">DATA ANALYST</span>
-            </div>
-            <div class="top-center">
-                <a href="mailto:rizky.afrizal@icloud.com" class="available-link">AVAILABLE FOR PROJECTS</a>
-            </div>
-            <div class="top-right">
-                <a href="Rizky%20Afrizal%20-%20Resume%20pdf.pdf" download class="resume-link">DOWNLOAD RÉSUMÉ</a>
-            </div>
-        </div>
-
-        <!-- Horizontal Projects Carousel -->
-        <div class="horizontal-carousel">
-            <div class="horizontal-scroll">
-                <!-- Set 1 -->
-                <a href="project-bali.html" class="project-thumbnail">
-                    <img src="assets/plots/adr_trend.png" alt="Bali Hotel Revenue Analysis">
-                    <div class="project-overlay-label">
-                        <span>BALI HOTEL REVENUE ANALYSIS</span>
+                <!-- Navbar -->
+                <nav class="navbar">
+                    <div class="nav-left">
+                        <a href="#about" class="logo">Portfolio.</a>
+                        <ul class="nav-links">
+                            <li><a href="#about" class="nav-link">About</a></li>
+                            <li><a href="#work" class="nav-link">Work</a></li>
+                            <li><a href="#contact" class="nav-link">Contact</a></li>
+                        </ul>
                     </div>
-                </a>
-
-                <a href="project-web3.html" class="project-thumbnail">
-                    <img src="assets/plots/uniswap_liquidity.png" alt="Uniswap V3 Liquidity Analysis">
-                    <div class="project-overlay-label">
-                        <span>UNISWAP LIQUIDITY ANALYSIS</span>
+                    <div class="nav-right">
+                        <a href="Rizky%20Afrizal%20-%20Resume%20pdf.pdf" download class="nav-btn btn-outline">Resume</a>
+                        <a href="mailto:rizky.afrizal@icloud.com" class="nav-btn btn-primary">Let's Talk</a>
                     </div>
-                </a>
+                    <button class="mobile-menu-btn" aria-label="Menu">
+                        ☰
+                    </button>
+                </nav>
 
-                <a href="project-bali.html" class="project-thumbnail">
-                    <img src="assets/plots/tableau_dashboard_mockup.png" alt="Dashboard Mockup">
-                    <div class="project-overlay-label">
-                        <span>DASHBOARD PROJECTS</span>
+                <!-- Interactive Particle Canvas -->
+                <canvas id="particleCanvas" class="particle-canvas"></canvas>
+
+                <!-- Floating Background Elements -->
+                <div class="floating-elements" id="floatingElements"></div>
+
+
+                <main class="one-page-layout">
+
+                    <!-- Horizontal Projects Carousel -->
+                    <div class="horizontal-carousel">
+                        <div class="horizontal-scroll">
+                            <!-- Set 1 -->
+                            <a href="project-bali.html" class="project-thumbnail">
+                                <img src="assets/plots/adr_trend.png" alt="Bali Hotel Revenue Analysis">
+                                <div class="project-overlay-label">
+                                    <span>BALI HOTEL REVENUE ANALYSIS</span>
+                                </div>
+                            </a>
+
+                            <a href="project-web3.html" class="project-thumbnail">
+                                <img src="assets/plots/uniswap_liquidity.png" alt="Uniswap V3 Liquidity Analysis">
+                                <div class="project-overlay-label">
+                                    <span>UNISWAP LIQUIDITY ANALYSIS</span>
+                                </div>
+                            </a>
+
+                            <a href="project-bali.html" class="project-thumbnail">
+                                <img src="assets/plots/tableau_dashboard_mockup.png" alt="Dashboard Mockup">
+                                <div class="project-overlay-label">
+                                    <span>DASHBOARD PROJECTS</span>
+                                </div>
+                            </a>
+
+                            <a href="project-bali.html" class="project-thumbnail">
+                                <img src="assets/plots/revenue_pie.png" alt="Revenue Analysis">
+                                <div class="project-overlay-label">
+                                    <span>REVENUE BREAKDOWN</span>
+                                </div>
+                            </a>
+
+                            <!-- Set 2 (Duplicate for smooth loop) -->
+                            <a href="project-bali.html" class="project-thumbnail">
+                                <img src="assets/plots/adr_trend.png" alt="Bali Hotel Revenue Analysis">
+                                <div class="project-overlay-label">
+                                    <span>BALI HOTEL REVENUE ANALYSIS</span>
+                                </div>
+                            </a>
+
+                            <a href="project-web3.html" class="project-thumbnail">
+                                <img src="assets/plots/uniswap_liquidity.png" alt="Uniswap V3 Liquidity Analysis">
+                                <div class="project-overlay-label">
+                                    <span>UNISWAP LIQUIDITY ANALYSIS</span>
+                                </div>
+                            </a>
+
+                            <a href="project-bali.html" class="project-thumbnail">
+                                <img src="assets/plots/tableau_dashboard_mockup.png" alt="Dashboard Mockup">
+                                <div class="project-overlay-label">
+                                    <span>DASHBOARD PROJECTS</span>
+                                </div>
+                            </a>
+
+                            <a href="project-bali.html" class="project-thumbnail">
+                                <img src="assets/plots/revenue_pie.png" alt="Revenue Analysis">
+                                <div class="project-overlay-label">
+                                    <span>REVENUE BREAKDOWN</span>
+                                </div>
+                            </a>
+                        </div>
                     </div>
-                </a>
 
-                <a href="project-bali.html" class="project-thumbnail">
-                    <img src="assets/plots/revenue_pie.png" alt="Revenue Analysis">
-                    <div class="project-overlay-label">
-                        <span>REVENUE BREAKDOWN</span>
+                    <!-- Main Name Display -->
+                    <div class="name-section">
+                        <div class="name-container">
+                            <h1 class="main-name">RIZKY<br>AFRIZAL.</h1>
+                            <div class="bio-section">
+                                <p class="bio-text">I enjoy working with data and turning it into useful insights that
+                                    help teams
+                                    with reporting and planning. I specialize in <span
+                                        class="highlight-orange">SQL</span>, <span
+                                        class="highlight-orange">Python</span>, <span
+                                        class="highlight-orange">Excel</span>, <span
+                                        class="highlight-orange">Tableau</span>, and <span
+                                        class="highlight-orange">Power BI</span>.
+                                </p>
+
+                                <div class="contact-links">
+                                    <a href="mailto:rizky.afrizal@icloud.com" class="btn-contact">LET'S TALK</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </a>
 
-                <!-- Set 2 (Duplicate for smooth loop) -->
-                <a href="project-bali.html" class="project-thumbnail">
-                    <img src="assets/plots/adr_trend.png" alt="Bali Hotel Revenue Analysis">
-                    <div class="project-overlay-label">
-                        <span>BALI HOTEL REVENUE ANALYSIS</span>
-                    </div>
-                </a>
+                </main>
 
-                <a href="project-web3.html" class="project-thumbnail">
-                    <img src="assets/plots/uniswap_liquidity.png" alt="Uniswap V3 Liquidity Analysis">
-                    <div class="project-overlay-label">
-                        <span>UNISWAP LIQUIDITY ANALYSIS</span>
-                    </div>
-                </a>
 
-                <a href="project-bali.html" class="project-thumbnail">
-                    <img src="assets/plots/tableau_dashboard_mockup.png" alt="Dashboard Mockup">
-                    <div class="project-overlay-label">
-                        <span>DASHBOARD PROJECTS</span>
-                    </div>
-                </a>
-
-                <a href="project-bali.html" class="project-thumbnail">
-                    <img src="assets/plots/revenue_pie.png" alt="Revenue Analysis">
-                    <div class="project-overlay-label">
-                        <span>REVENUE BREAKDOWN</span>
-                    </div>
-                </a>
-            </div>
-        </div>
-
-        <!-- Main Name Display -->
-        <div class="name-section">
-            <div class="name-container">
-                <h1 class="main-name">RIZKY<br>AFRIZAL.</h1>
-                <div class="bio-section">
-                    <p class="bio-text">I enjoy working with data and turning it into useful insights that help teams
-                        with reporting and planning. I specialize in <span class="highlight-orange">SQL</span>, <span
-                            class="highlight-orange">Python</span>, <span class="highlight-orange">Excel</span>, <span
-                            class="highlight-orange">Tableau</span>, and <span class="highlight-orange">Power BI</span>.
-                    </p>
-
-                    <div class="contact-links">
-                        <a href="mailto:rizky.afrizal@icloud.com" class="btn-contact">LET'S TALK</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </main>
-
-    <script src="js/app.js?v=6.0"></script>
+                <script src="js/app.js?v=8.0"></script>
 </body>
 
 </html>
