@@ -166,10 +166,42 @@ body {
 .horizontal-scroll {
     display: flex;
     gap: 2rem;
-    padding: 0 4rem;
     /* Add side padding so items aren't flush w/ edge initially */
-    animation: scroll 25s linear infinite;
+    animation: scroll 12s linear infinite;
     width: fit-content;
+}
+
+/* 
+   ==========================================================================
+   LOADER & ANIMATIONS
+   ==========================================================================
+*/
+
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 9999;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 2.5rem;
+}
+
+.loader-counter {
+    font-family: var(--font-display);
+    font-size: 8rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1;
+}
+
+.hero-reveal {
+    opacity: 0;
+    /* GSAP will handle visibility */
 }
 
 @keyframes scroll {

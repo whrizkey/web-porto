@@ -28,22 +28,31 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="css/style.css?v=9.1">
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/CustomEase.min.js"></script>
 </head>
 
 <body>
 
+    <!-- Loader -->
+    <div class="loader">
+        <div class="loader-counter">0%</div>
+    </div>
+
     <!-- Top Left: Role/Title -->
-    <div class="corner-top-left">
+    <div class="corner-top-left hero-reveal">
         <span class="role-text">DATA ANALYST &<br>REVENUE STRATEGIST</span>
     </div>
 
     <!-- Top Center: Time/Location (Optional, can be dynamic JS later) -->
-    <div class="corner-top-center">
+    <div class="corner-top-center hero-reveal">
         <span id="local-time">JAKARTA, ID</span>
     </div>
 
     <!-- Top Right: Nav/Actions -->
-    <div class="corner-top-right">
+    <div class="corner-top-right hero-reveal">
         <a href="Rizky%20Afrizal%20-%20Resume%20pdf.pdf" download class="nav-link-item">RESUME</a>
         <a href="mailto:rizky.afrizal@icloud.com" class="nav-link-item">CONTACT</a>
     </div>
@@ -52,7 +61,7 @@
     <main class="one-page-layout">
 
         <!-- Centered Horizontal Carousel -->
-        <div class="horizontal-carousel-wrapper">
+        <div class="horizontal-carousel-wrapper hero-reveal">
             <div class="horizontal-carousel">
                 <div class="horizontal-scroll" id="carouselScroll">
                     <!-- Project 1 -->
@@ -107,11 +116,11 @@
 
         <!-- Bottom Left: Massive Name -->
         <div class="corner-bottom-left">
-            <h1 class="main-name">RIZKY<br>AFRIZAL.</h1>
+            <h1 class="main-name hero-reveal">RIZKY<br>AFRIZAL.</h1>
         </div>
 
         <!-- Bottom Right: Bio/Action -->
-        <div class="corner-bottom-right">
+        <div class="corner-bottom-right hero-reveal">
             <p class="bio-text">
                 Specializing in <span class="highlight-orange">SQL</span>, <span class="highlight-orange">Python</span>,
                 and <span class="highlight-orange">Tableau</span>.<br>
