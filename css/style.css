@@ -32,6 +32,7 @@ body {
 }
 
 
+/* Particle Canvas */
 .particle-canvas {
     position: fixed;
     top: 0;
@@ -39,125 +40,135 @@ body {
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: 1;
-    opacity: 0.5;
+    z-index: 0;
+    opacity: 0.3;
 }
 
 .floating-elements {
     display: none;
 }
 
+/* 
+   ==========================================================================
+   CORNER NAVIGATION & LAYOUT
+   ==========================================================================
+*/
 
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 2rem 3rem;
-    z-index: 1000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(10, 10, 11, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border-color);
+/* Top Left: Role */
+.corner-top-left {
+    position: absolute;
+    top: 2.5rem;
+    left: 2.5rem;
+    z-index: 100;
 }
 
-.nav-left {
-    display: flex;
-    align-items: center;
-    gap: 3rem;
+.role-text {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    line-height: 1.4;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    display: block;
 }
 
-.logo {
-    font-size: 1.25rem;
-    font-weight: 700;
+/* Top Center: Time/Location */
+.corner-top-center {
+    position: absolute;
+    top: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+}
+
+#local-time {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+}
+
+/* Top Right: Actions */
+.corner-top-right {
+    position: absolute;
+    top: 2.5rem;
+    right: 2.5rem;
+    z-index: 100;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link-item {
+    font-size: 0.85rem;
+    font-weight: 600;
     color: var(--text-primary);
     text-decoration: none;
-}
-
-.nav-links {
-    display: flex;
-    gap: 2.5rem;
-    list-style: none;
-    margin: 0;
-}
-
-.nav-link {
-    font-size: 1rem;
-    color: var(--text-secondary);
-    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
     transition: color 0.2s;
-    font-weight: 500;
 }
 
-.nav-link:hover {
+.nav-link-item:hover {
     color: var(--accent-orange);
 }
 
-.nav-right {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
+/* Bottom Left: Main Name */
+.corner-bottom-left {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 2.5rem;
+    z-index: 100;
+    pointer-events: none;
+    /* Let clicks pass through if needed */
 }
 
-.nav-btn {
-    padding: 0.75rem 2rem;
-    font-size: 0.95rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.2s;
-    border: none;
-    cursor: pointer;
+/* Bottom Right: Bio & CTA */
+.corner-bottom-right {
+    position: absolute;
+    bottom: 2.5rem;
+    right: 2.5rem;
+    z-index: 100;
+    text-align: right;
+    max-width: 350px;
 }
 
-.btn-outline {
-    background: transparent;
-    color: var(--text-primary);
-    border: 2px solid var(--border-color);
-}
-
-.btn-outline:hover {
-    border-color: var(--text-primary);
-}
-
-.btn-primary {
-    background: var(--accent-orange);
-    color: #000;
-}
-
-.btn-primary:hover {
-    background: var(--accent-orange-hover);
-    transform: translateY(-1px);
-}
-
-.mobile-menu-btn {
-    display: none;
-}
-
-
+/* One Page Layout Wrapper */
 .one-page-layout {
     height: 100vh;
-    display: flex;
-    flex-direction: column;
+    width: 100%;
     position: relative;
+    overflow: hidden;
     z-index: 10;
-    padding-top: 80px;
 }
 
+/* Auto-Scrolling Carousel - CENTERED */
+/* Vertically Centered Carousel */
+.horizontal-carousel-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    transform: translateY(-50%);
+    z-index: 50;
+    /* Ensure it doesn't block clicks to corners */
+    pointer-events: none;
+}
 
 .horizontal-carousel {
     width: 100%;
     overflow: hidden;
-    padding: 3rem 0;
-    flex: 0 0 auto;
+    padding: 2rem 0;
+    /* Enable pointer events only on the carousel content */
+    pointer-events: auto;
 }
 
 .horizontal-scroll {
     display: flex;
-    gap: 1.5rem;
-    padding: 0 3rem;
-    animation: scroll 8s linear infinite;
+    gap: 2rem;
+    padding: 0 4rem;
+    /* Add side padding so items aren't flush w/ edge initially */
+    animation: scroll 25s linear infinite;
     width: fit-content;
 }
 
@@ -167,8 +178,10 @@ body {
     }
 
     100% {
-        transform: translateX(calc(-33.333%));
+        transform: translateX(-50%);
     }
+
+    /* Adjust based on duplicated content */
 }
 
 .horizontal-scroll:hover {
@@ -176,88 +189,74 @@ body {
 }
 
 .project-thumbnail {
-    flex: 0 0 380px;
-    height: 240px;
+    flex: 0 0 450px;
+    /* Larger thumbnails */
+    height: 280px;
     position: relative;
     overflow: hidden;
-    border: 1px solid var(--border-color);
+    /* border: 1px solid var(--border-color); */
     text-decoration: none;
-    transition: border-color 0.3s;
-    background: #000;
+    background: black;
+    transition: transform 0.3s ease;
 }
 
 .project-thumbnail:hover {
-    border-color: var(--accent-orange);
+    transform: scale(1.02);
+    z-index: 60;
 }
 
 .project-thumbnail img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    transition: transform 0.3s;
-    background: #000;
+    /* Contain to show full charts */
+    background: black;
+    opacity: 0.8;
+    transition: opacity 0.3s;
 }
 
 .project-thumbnail:hover img {
-    transform: scale(1.05);
+    opacity: 1;
 }
 
 .project-overlay-label {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 1rem;
-    background: linear-gradient(to top, rgba(10, 10, 11, 0.95), transparent);
+    bottom: 1rem;
+    left: 1rem;
+    z-index: 10;
 }
 
 .project-overlay-label span {
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    color: var(--text-primary);
+    font-family: var(--font-main);
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    color: #fff;
     text-transform: uppercase;
     font-weight: 600;
+    background: black;
+    padding: 0.3rem 0.6rem;
 }
 
-
-.name-section {
-    flex: 1;
-    display: flex;
-    align-items: flex-end;
-    padding: 0 3rem 4rem 3rem;
-}
-
-.name-container {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 4rem;
-}
-
-
+/* Bottom Section - Name Left, Bio Right */
+/* Main Name - Bottom Left */
 .main-name {
     font-family: var(--font-display);
-    font-size: clamp(4rem, 10vw, 9rem);
-    font-weight: 900;
-    line-height: 0.85;
-    letter-spacing: -0.02em;
+    font-size: clamp(6rem, 14vw, 16rem);
+    font-weight: 800;
+    line-height: 0.8;
+    letter-spacing: -0.04em;
     text-transform: uppercase;
-    flex-shrink: 0;
+    color: var(--text-primary);
+    margin: 0;
 }
 
-
-.bio-section {
-    max-width: 500px;
-    flex-shrink: 0;
-    padding-bottom: 0.5rem;
-}
-
+/* Bio Text - Bottom Right */
 .bio-text {
-    font-size: 1rem;
-    line-height: 1.8;
+    font-size: 0.95rem;
+    line-height: 1.6;
     color: var(--text-secondary);
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: right;
 }
 
 .highlight-orange {
@@ -265,30 +264,85 @@ body {
     font-weight: 600;
 }
 
-.contact-links {
-    display: flex;
-    gap: 1rem;
-}
-
-.btn-contact {
-    padding: 0.9rem 2.5rem;
+.btn-primary-large {
+    display: inline-block;
+    padding: 1rem 2rem;
     background: var(--accent-orange);
     color: #000;
-    font-weight: 700;
-    font-size: 0.8rem;
-    letter-spacing: 0.05em;
-    text-decoration: none;
+    font-weight: 800;
     text-transform: uppercase;
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
     transition: all 0.2s;
-    display: inline-block;
 }
 
-.btn-contact:hover {
+.btn-primary-large:hover {
     background: var(--accent-orange-hover);
     transform: translateY(-2px);
 }
 
+/* Mobile Adjustments */
+@media (max-width: 768px) {
 
+    /* Stack elements naturally on mobile if needed, or keep the chaos */
+    .one-page-layout {
+        overflow-y: auto;
+        height: 100vh;
+        padding-bottom: 2rem;
+    }
+
+    .horizontal-carousel-wrapper {
+        position: relative;
+        transform: none;
+        top: 0;
+        margin-top: 120px;
+        margin-bottom: 2rem;
+    }
+
+    .corner-top-left {
+        top: 1.5rem;
+        left: 1.5rem;
+    }
+
+    .corner-top-right {
+        top: 1.5rem;
+        right: 1.5rem;
+    }
+
+    .corner-top-center {
+        top: 1.5rem;
+    }
+
+    .corner-bottom-left {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        padding: 0 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .corner-bottom-right {
+        position: relative;
+        /* Change to relative for mobile flow */
+        bottom: auto;
+        right: auto;
+        text-align: left;
+        /* Align left on mobile */
+        padding: 0 1.5rem;
+        max-width: 100%;
+    }
+
+    .bio-text {
+        text-align: left;
+    }
+
+    .main-name {
+        font-size: 20vw;
+    }
+}
+
+/* Mobile */
 @media (max-width: 768px) {
     .navbar {
         padding: 1rem 1.5rem;
@@ -327,4 +381,101 @@ body {
     .nav-links {
         display: none;
     }
+}
+
+/* 
+   ==========================================================================
+   PROJECT PAGE READABILITY FIXES
+   (Appended to preserve original site styles)
+   ==========================================================================
+*/
+
+/* 1. Article Container */
+.article-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: var(--font-main, sans-serif);
+    color: #e4e4e7;
+    /* Light gray for readability */
+    line-height: 1.8;
+    background: transparent;
+    /* Ensure it doesn't block background */
+}
+
+/* 2. Typography for Articles */
+.article-content h2 {
+    font-family: var(--font-display, sans-serif);
+    font-size: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+    border-left: 4px solid var(--accent-orange, #FF6B35);
+    padding-left: 1rem;
+}
+
+.article-content p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+/* 3. Project Header (Titles & Meta) */
+.project-header {
+    text-align: center;
+    padding: 8rem 2rem 4rem;
+    /* Top padding clears navbar */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 2rem;
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.project-meta {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    color: var(--accent-orange, #FF6B35);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+/* 4. Visual Assets (Charts & Code) */
+.chart-container {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.chart-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.code-block {
+    background: #1a1a1b;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 2rem 0;
+    overflow-x: auto;
+}
+
+/* 5. Navigation & Footer Enhancements */
+.footer {
+    text-align: center;
+    padding: 4rem 2rem;
+    margin-top: 4rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #a1a1aa;
 }

@@ -1,6 +1,6 @@
+/* Main Application Script */
 
-
-
+// Change navbar when scrolling
 const navbar = document.getElementById('navbar');
 
 window.addEventListener('scroll', () => {
@@ -11,7 +11,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-
+// Mobile Menu
 const mobileBtn = document.querySelector('.mobile-menu-btn');
 const navLinks = document.querySelector('.nav-links');
 
@@ -20,7 +20,7 @@ if (mobileBtn && navLinks) {
         navLinks.classList.toggle('active');
     });
 
-    
+    // Close menu when clicking a link
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', () => {
             navLinks.classList.remove('active');
@@ -28,7 +28,7 @@ if (mobileBtn && navLinks) {
     });
 }
 
-
+// Carousel Functionality
 const carouselTrack = document.querySelector('.carousel-track');
 const carouselPrev = document.querySelector('.carousel-prev');
 const carouselNext = document.querySelector('.carousel-next');
@@ -39,15 +39,15 @@ let currentIndex = 0;
 const totalProjects = projectCards.length;
 
 function updateCarousel() {
-    
+    // Calculate offset
     const cardWidth = 440;
-    const gap = 32; 
+    const gap = 32; // 2rem
     const offset = currentIndex * (cardWidth + gap);
 
-    
+    // Move carousel
     carouselTrack.style.transform = `translateX(-${offset}px)`;
 
-    
+    // Update active card
     projectCards.forEach((card, index) => {
         if (index === currentIndex) {
             card.classList.add('active');
@@ -56,7 +56,7 @@ function updateCarousel() {
         }
     });
 
-    
+    // Update dots
     carouselDots.forEach((dot, index) => {
         if (index === currentIndex) {
             dot.classList.add('active');
@@ -66,7 +66,7 @@ function updateCarousel() {
     });
 }
 
-
+// Next button
 if (carouselNext) {
     carouselNext.addEventListener('click', () => {
         currentIndex = (currentIndex + 1) % totalProjects;
@@ -74,7 +74,7 @@ if (carouselNext) {
     });
 }
 
-
+// Previous button
 if (carouselPrev) {
     carouselPrev.addEventListener('click', () => {
         currentIndex = (currentIndex - 1 + totalProjects) % totalProjects;
@@ -82,7 +82,7 @@ if (carouselPrev) {
     });
 }
 
-
+// Dots navigation
 carouselDots.forEach((dot, index) => {
     dot.addEventListener('click', () => {
         currentIndex = index;
@@ -90,7 +90,7 @@ carouselDots.forEach((dot, index) => {
     });
 });
 
-
+// Touch/Swipe support for mobile
 let touchStartX = 0;
 let touchEndX = 0;
 
@@ -107,24 +107,24 @@ if (carouselTrack) {
     function handleSwipe() {
         const swipeThreshold = 50;
         if (touchEndX < touchStartX - swipeThreshold) {
-            
+            // Swipe left - next
             currentIndex = (currentIndex + 1) % totalProjects;
             updateCarousel();
         }
         if (touchEndX > touchStartX + swipeThreshold) {
-            
+            // Swipe right - previous
             currentIndex = (currentIndex - 1 + totalProjects) % totalProjects;
             updateCarousel();
         }
     }
 }
 
-
+// Initialize carousel on load
 if (projectCards.length > 0) {
     updateCarousel();
 }
 
-
+// Scroll Reveal Animations
 const revealElements = document.querySelectorAll('.scroll-reveal');
 
 function checkScroll() {
@@ -138,11 +138,11 @@ function checkScroll() {
     });
 }
 
-
+// Check on scroll and load
 window.addEventListener('scroll', checkScroll);
 window.addEventListener('load', checkScroll);
 
-
+// Smooth scroll for nav links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
@@ -159,11 +159,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-
+// Interactive Particle System
 const canvas = document.getElementById('particleCanvas');
 const ctx = canvas.getContext('2d');
 
-
+// Set canvas size
 function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -171,11 +171,11 @@ function resizeCanvas() {
 resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
 
-
+// Mouse position
 let mouse = {
     x: null,
     y: null,
-    radius: 150 
+    radius: 150 // Area of effect around mouse
 };
 
 window.addEventListener('mousemove', (e) => {
@@ -183,7 +183,7 @@ window.addEventListener('mousemove', (e) => {
     mouse.y = e.y;
 });
 
-
+// Particle class
 class Particle {
     constructor() {
         this.x = Math.random() * canvas.width;
@@ -195,7 +195,7 @@ class Particle {
         this.speedX = (Math.random() - 0.5) * 0.5;
         this.speedY = (Math.random() - 0.5) * 0.5;
 
-        
+        // Color variations (orange theme only)
         const colors = ['#FF6B35', '#FF8555', '#FF9F70'];
         this.color = colors[Math.floor(Math.random() * colors.length)];
     }
@@ -207,17 +207,17 @@ class Particle {
         ctx.closePath();
         ctx.fill();
 
-        
+        // Add glow effect
         ctx.shadowBlur = 10;
         ctx.shadowColor = this.color;
     }
 
     update() {
-        
+        // Gentle floating motion
         this.x += this.speedX;
         this.y += this.speedY;
 
-        
+        // Mouse interaction - particles get pushed away
         if (mouse.x != null && mouse.y != null) {
             let dx = mouse.x - this.x;
             let dy = mouse.y - this.y;
@@ -228,17 +228,17 @@ class Particle {
                 let directionX = dx / distance;
                 let directionY = dy / distance;
 
-                
+                // Push away from mouse
                 this.x -= directionX * force * 3;
                 this.y -= directionY * force * 3;
             }
         }
 
-        
+        // Slowly return to base position
         this.x += (this.baseX - this.x) * 0.02;
         this.y += (this.baseY - this.y) * 0.02;
 
-        
+        // Wrap around edges
         if (this.x < 0) this.x = canvas.width;
         if (this.x > canvas.width) this.x = 0;
         if (this.y < 0) this.y = canvas.height;
@@ -248,7 +248,7 @@ class Particle {
     }
 }
 
-
+// Create particles
 let particlesArray = [];
 const numberOfParticles = 80;
 
@@ -260,7 +260,7 @@ function init() {
 }
 init();
 
-
+// Animation loop
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -272,7 +272,7 @@ function animate() {
 }
 animate();
 
-
+// Parallax Effect for sections
 let parallaxSections = document.querySelectorAll('.about-visual, .project-card');
 
 window.addEventListener('mousemove', (e) => {
@@ -288,7 +288,7 @@ window.addEventListener('mousemove', (e) => {
     });
 });
 
-
+// Animated Data Counters
 const metricNumbers = document.querySelectorAll('.metric-number');
 let countersAnimated = false;
 
@@ -297,8 +297,8 @@ function animateCounters() {
 
     metricNumbers.forEach(counter => {
         const target = parseInt(counter.getAttribute('data-target'));
-        const duration = 2000; 
-        const increment = target / (duration / 16); 
+        const duration = 2000; // 2 seconds
+        const increment = target / (duration / 16); // 60fps
         let current = 0;
 
         const updateCounter = () => {
@@ -317,7 +317,7 @@ function animateCounters() {
     countersAnimated = true;
 }
 
-
+// Trigger counter animation when metrics section is in view
 function checkMetrics() {
     const metricsSection = document.querySelector('.metrics-showcase');
     if (metricsSection) {
