@@ -21,6 +21,14 @@
 
 html,
 body {
+    /* Allow scrolling by default for project pages */
+    min-height: 100%;
+    overflow-x: hidden;
+}
+
+/* Homepage specific lock */
+.homepage-mode,
+.homepage-mode body {
     height: 100%;
     overflow: hidden;
 }
@@ -131,6 +139,51 @@ body {
     z-index: 100;
     text-align: right;
     max-width: 350px;
+}
+
+/* Project Page Navigation */
+.project-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem 2rem;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(10, 10, 11, 0.9) 0%, rgba(10, 10, 11, 0) 100%);
+    pointer-events: none;
+    /* Let clicks pass through empty areas */
+}
+
+.project-nav-container {
+    pointer-events: auto;
+    /* Re-enable clicks on links */
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.back-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.8rem 1.2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    backdrop-filter: blur(8px);
+    transition: all 0.2s ease;
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(-2px);
 }
 
 /* One Page Layout Wrapper */
@@ -423,6 +476,7 @@ body {
 */
 
 /* 1. Article Container */
+/* 1. Article Container */
 .article-content {
     max-width: 800px;
     margin: 0 auto;
@@ -431,8 +485,11 @@ body {
     color: #e4e4e7;
     /* Light gray for readability */
     line-height: 1.8;
-    background: transparent;
-    /* Ensure it doesn't block background */
+    background: rgba(10, 10, 11, 0.95);
+    /* High opacity dark bg */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
 }
 
 /* 2. Typography for Articles */
